@@ -59,7 +59,7 @@ const leftDiv = {
   display: "flex",
   flex: 0.25,
   backgroundColor: "#212F3C",
-  height: "100vh",
+  height: "90vh",
   flexDirection: "column",
   textAlign: "left",
   overflowY: "scroll",
@@ -71,7 +71,7 @@ const rightDiv = {
   display: "flex",
   flex: 1,
   backgroundColor: "white",
-  height: "100vh",
+  height: "90vh",
   overflow: "auto",
   "@media (max-width: 600px)": {},
 };

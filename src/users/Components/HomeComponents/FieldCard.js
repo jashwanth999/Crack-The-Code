@@ -49,7 +49,7 @@ const headDiv = {
 
 const image = {
   heigth: 20,
-  width: 25,
+  width: 20,
   objectFit: "contain",
   borderRadius: 5,
   padding: 4,

@@ -2,68 +2,95 @@ import { doc, setDoc } from "firebase/firestore";
 import React from "react";
 import { db } from "../Api/Firebase";
 const data = {
-  problemName: "1 Two Sum",
-  difficult: "Easy",
-  problemStatement: `Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-
-  You may assume that each input would have exactly one solution, and you may not use the same element twice.
-  
-  You can return the answer in any order.`,
-
+  problemName: "5 Longest Palindromic Substring",
+  difficult: "Medium",
+  problemStatement: `Given a string s, return the longest palindromic substring in s.`,
   testCases: {
     code: `
-Input: nums = [2,7,11,15], target = 9
-Output: [0,1]
-Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+Input: s = "babad"
+Output: "bab"
+Explanation: "aba" is also a valid answer.
 
-Input: nums = [3,2,4], target = 6
-Output: [1,2]
 
-Input: nums = [3,3], target = 6
-Output: [0,1]
+Input: s = "cbbd"
+Output: "bb"
 `,
     language: "text",
   },
 
   approachList: [
     {
-      approachName: "Hash Map",
+      approachName: "Brute Force (optimized version)",
       code: `
-  class Solution {
-       public:
-            vector<int> twoSum(vector<int>& nums, int target) {
-                unordered_map<int,int>mp;
-                for(int i=0;i<nums.size();i++)
+      class Solution {
+        public:
+            string longestPalindrome(string s) {
+                int start=0,end=1,len=0;
+                for(int i=1;i<s.length();i++)
                 {
-                     if(mp[target-nums[i]])
-                     {
-                          return {i,mp[target-nums[i]]-1};
-                     }
-                    mp[nums[i]]=i+1;
+                    int l=i-1;
+                    int r=i;
+                    while(l>=0 and r<s.length() and s[l]==s[r])
+                    {
+                        if((r-l+1)>len)
+                        {
+                            len=r-l+1;
+                            start=l;
+                            end=r-l+1;
+                        }
+                        r++;
+                        l--;
+                        
+                    }
+                    l=i-1;
+                    r=i+1;
+                     while(l>=0 and r<s.length() and s[l]==s[r])
+                    {
+                        if((r-l+1)>len)
+                        {
+                            len=r-l+1;
+                            start=l;
+                            end=r-l+1;
+                        }
+                        r++;
+                        l--;
+                    }
+                    
                 }
-                return {};
-     }
-};
+                
+                return s.substr(start,end);
+            }
+        };
         `,
       language: "cpp",
       complexity: {
-        timeComplexity: "O(n)",
-        timeDesc: "Only single loop is used",
-        spaceComplexity: "O(n)",
-        spaceDesc: "Extra spaces used for Hash Map ",
+        timeComplexity: "O(n^2)",
+        timeDesc: `Nested loops are used 
+        for loop - traverse 1 to length ogf string
+        while loop - traverse for even and odd length of the string
+         `,
+        spaceComplexity: "O(1)",
+        spaceDesc: "No extra space is used",
       },
-      approachDescription: `Traversing through forloop mapping val to index and checking whethere map[target - nums[i]] is found return pair else empty list`,
+      approachDescription: `
+     Note - if a string should be palindrome it should have less the one odd frequency character
+     Traversing for loop 
+     checking while condition for both even and odd length of string palindrome or not
+      `,
     },
   ],
   links: "https://youtube.com/embed/dRUpbt8vHpo",
-  tags: ["Array", "Hash Map", "Two Pointer"],
+  tags: ["Array"],
   timestamp: new Date(),
 };
 
 export default function AddLeetcode() {
   const addProblem = () => {
     try {
-      setDoc(doc(db, "leetcode-solutions", "1-Two-Sum"), data);
+      setDoc(
+        doc(db, "leetcode-solutions", "5-Longest-Palindromic-Substring"),
+        data
+      );
     } catch (error) {
       alert(error.message);
     }

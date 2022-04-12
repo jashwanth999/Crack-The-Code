@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { ListItemButton, ListItemText} from "@mui/material";
-
+import { ListItemButton, ListItemText, Typography } from "@mui/material";
 
 export default function LeftDiv(props) {
   const [checked, setChecked] = useState(0);
-  
+
   return (
     <div>
       <div style={headDiv}>
@@ -29,9 +28,14 @@ export default function LeftDiv(props) {
             }}
           >
             <ListItemText
-              style={{ color: checked === index ? "#596ABC" : "white" }}
+              style={{
+                color: checked === index ? "#596ABC" : "white",
+              }}
             >
-              {props.truncate(val, 20)}
+              <Typography style={{ fontWeight: "bold" ,fontSize:15}}>
+                {" "}
+                {props.truncate(val, 26)}
+              </Typography>
             </ListItemText>
           </ListItemButton>
         );
@@ -48,5 +52,4 @@ const image = {
   width: 25,
   objectFit: "contain",
   margin: 6,
- 
 };
