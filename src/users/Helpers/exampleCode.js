@@ -27,7 +27,7 @@ const LineContent = styled.span`
 `;
 
 const WithLineNumbers = (props) => (
-  <div style={{ width: "100%", padding: 10 }}>
+  <div style={{ width: "98%",paddingLeft:10 }}>
     <Highlight
       {...defaultProps}
       theme={theme}

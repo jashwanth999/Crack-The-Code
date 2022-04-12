@@ -1,15 +1,15 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import AddLeetcode from "../../Admin/AddLeetcode";
 import Home from "../Screens/Home";
 import SolutionScreen from "../Screens/SolutionScreen";
 
 export default function RoutesComponent() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/:name/:id" element={<SolutionScreen />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/:name/:id" element={<SolutionScreen />} />
+      <Route path="/Admin" element={<AddLeetcode />} />
+    </Routes>
   );
 }

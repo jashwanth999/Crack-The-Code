@@ -1,58 +1,47 @@
 import { StyleRoot } from "radium";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LeftDiv from "../Helpers/LeftDiv";
 import RightDiv from "../Helpers/RightDiv";
-
+import "../../App.css";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from "../../Api/Firebase";
+import { useDispatch } from "react-redux";
+import { drawerListAction } from "../../Api/actions";
 //import LeftDrawer from "../Helpers/LeftDrawer";
 function truncate(string, length) {
   if (string.length > length) return string.substring(0, length) + "...";
   else return string;
 }
-const list = [
-  "1 Two Sum",
-  "2 Three Sum",
-  "4 Longest Common Subsequence",
-  "5 Longest Common Substring",
-  "1 Two Sum",
-  "2 Three Sum",
-  "4 Longest Common Subsequence",
-  "5 Longest Common Substring",
-  "1 Two Sum",
-  "2 Three Sum",
-  "4 Longest Common Subsequence",
-  "5 Longest Common Substring",
-  "1 Two Sum",
-  "2 Three Sum",
-  "4 Longest Common Subsequence",
-  "5 Longest Common Substring",
-  "1 Two Sum",
-  "2 Three Sum",
-  "4 Longest Common Subsequence",
-  "5 Longest Common Substring",
-  "2 Three Sum",
-  "4 Longest Common Subsequence",
-  "5 Longest Common Substring",
-  "2 Three Sum",
-  "4 Longest Common Subsequence",
-  "5 Longest Common Substring",
-  "2 Three Sum",
-  "4 Longest Common Subsequence",
-  "5 Longest Common Substring",
-  "2 Three Sum",
-  "4 Longest Common Subsequence",
-  "5 Longest Common Substring",
-];
-
 export default function SolutionScreen() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [problemsList, setProblemsList] = useState([]);
+
+  useEffect(() => {
+    const unsub = onSnapshot(
+      collection(db, "leetcode-solutions"),
+      (snapshot) => {
+        setProblemsList(snapshot.docs.map((doc) => doc.data().problemName));
+        dispatch(
+          drawerListAction(snapshot.docs.map((doc) => doc.data().problemName))
+        );
+      }
+    );
+    return unsub;
+  }, [dispatch]);
   return (
     <StyleRoot>
       <div className="App" style={rootDiv}>
-        <div style={leftDiv}>
-          <LeftDiv list={list} navigate={navigate} truncate={truncate} />
+        <div className="leftDiv" style={leftDiv}>
+          <LeftDiv
+            list={problemsList}
+            navigate={navigate}
+            truncate={truncate}
+          />
         </div>
-        <div style={rightDiv}>
+        <div className="rightDiv" style={rightDiv}>
           <RightDiv />
         </div>
       </div>
@@ -63,9 +52,7 @@ const rootDiv = {
   display: "flex",
   flexDirection: "row",
   flex: 1,
-  "::-webkit-scrollbar": {
-    display: "none",
-  },
+ 
 };
 const leftDiv = {
   display: "flex",
@@ -75,7 +62,7 @@ const leftDiv = {
   flexDirection: "column",
   textAlign: "left",
   overflowY: "scroll",
-  "@media (max-width: 500px)": {
+  "@media (max-width: 600px)": {
     display: "none",
   },
 };
@@ -84,6 +71,6 @@ const rightDiv = {
   flex: 1,
   backgroundColor: "white",
   height: "100vh",
-  overflowY: "scroll",
-  "@media (max-width: 500px)": {},
+  overflow: "auto",
+  "@media (max-width: 600px)": {},
 };

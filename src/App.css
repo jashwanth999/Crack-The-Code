@@ -1,6 +1,28 @@
 .App {
   text-align: center;
+  
 }
-.App::-webkit-scrollbar {
-  display: none;
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 0px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: #aeb6bf;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #aeb6bf;
+  border-radius: 5px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .rightDiv {
+    display: none;
+  }
 }

@@ -35,7 +35,7 @@ export default function SolutionCard() {
             solving coding questions.
           </Typography>
           <Button
-            href="/leetcode-solutions/1-Two-sum"
+            href="/leetcode-solutions/1-Two-Sum"
             style={{
               backgroundColor: "rgb(0, 30, 60)",
               color: "white",

@@ -1,17 +1,20 @@
 import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
+//import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
+//import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
+//import SearchIcon from "@mui/icons-material/Search";
 import { StyleRoot } from "radium";
-import LeftDrawer from "./LeftDrawer";
-import { useNavigate } from "react-router-dom";
+//import LeftDrawer from "./LeftDrawer";
+//import { useNavigate } from "react-router-dom";
 import { Link } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { tiggerDrawer } from "../../Api/actions";
+import LeftDrawer from "./LeftDrawer";
 
 /*const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -56,18 +59,19 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 */
 export default function CTCNavBar() {
-  const [state, setState] = React.useState(false);
-
+  const state = useSelector((state) => state.open.open);
+  const dispatch = useDispatch();
   const toggleDrawer = () => {
-    setState(!state);
+    dispatch(tiggerDrawer(!state));
   };
+
   return (
     <StyleRoot>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar style={{ backgroundColor: "rgb(0, 30, 60)" }} position="static">
           <Toolbar>
             <IconButton
-            //  toggleDrawer={toggleDrawer}
+              onClick={toggleDrawer}
               size="large"
               edge="start"
               color="inherit"
@@ -118,10 +122,10 @@ export default function CTCNavBar() {
           </Toolbar>
         </AppBar>
       </Box>
+      <LeftDrawer />
     </StyleRoot>
   );
 }
-const menu = {
+/*const menu = {
   "@media (max-width: 500px)": {},
-};
-// we found the all docs what we need
+};*/

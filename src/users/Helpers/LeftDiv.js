@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { ListItemButton, ListItemText, Typography } from "@mui/material";
+import { ListItemButton, ListItemText} from "@mui/material";
+
 
 export default function LeftDiv(props) {
   const [checked, setChecked] = useState(0);
+  
   return (
     <div>
       <div style={headDiv}>
