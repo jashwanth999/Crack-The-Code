@@ -104,7 +104,7 @@ export default function CTCNavBar() {
                 </span>
                 <span style={{ color: "#1B93B4", fontWeight: "bold" }}>
                   {" "}
-                  Code
+                  Company
                 </span>
               </Link>
             </Typography>
