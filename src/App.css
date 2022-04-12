@@ -1,6 +1,5 @@
 .App {
   text-align: center;
-  
 }
 
 ::-webkit-scrollbar {
@@ -19,7 +18,6 @@
   background: #aeb6bf;
   border-radius: 5px;
 }
-
 
 @media only screen and (max-width: 600px) {
   .rightDiv {

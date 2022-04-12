@@ -68,7 +68,7 @@ export default function CTCNavBar() {
   return (
     <StyleRoot>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar style={{ backgroundColor: "rgb(0, 30, 60)" }} position="static">
+        <AppBar style={{ backgroundColor: "rgb(0, 30, 60)" }} position="fixed">
           <Toolbar>
             <IconButton
               onClick={toggleDrawer}

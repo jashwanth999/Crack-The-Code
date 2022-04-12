@@ -34,6 +34,7 @@ export default function SolutionScreen() {
   return (
     <StyleRoot>
       <div className="App" style={rootDiv}>
+        
         <div className="leftDiv" style={leftDiv}>
           <LeftDiv
             list={problemsList}

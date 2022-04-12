@@ -10,8 +10,6 @@ export default function Home() {
         <div style={rightDiv}>
           <div style={leftCardDiv}>
             <FieldCard />
-            <FieldCard />
-            <FieldCard />
           </div>
         </div>
       </div>
@@ -22,12 +20,11 @@ const rootDiv = {
   display: "flex",
   flexDirection: "row",
   flex: 1,
-  height: "100vh",
 };
 
 const leftDiv = {
   display: "flex",
-  flex: 0.2,
+  flex: 0.25,
   height: "100vh",
   textAlign: "left",
   backgroundColor: "#212F3C",
@@ -37,10 +34,14 @@ const leftDiv = {
 };
 const rightDiv = {
   display: "flex",
-  flex: 0.8,
+  flex: 1,
   height: "100vh",
   overflowY: "scroll",
-  "@media (max-width: 600)": {},
+ 
+  "@media (max-width: 600)": {
+    flex: 1,
+  
+  },
 };
 
 const leftCardDiv = {
