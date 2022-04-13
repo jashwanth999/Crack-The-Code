@@ -1,1 +1,1 @@
-<a href='crackthecompany.online'> Crack the Code </a>
+<a href='https://crackthecompany.online/'  target='blank'> Crack the Code </a>
