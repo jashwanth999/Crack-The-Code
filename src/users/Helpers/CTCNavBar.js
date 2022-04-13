@@ -11,13 +11,11 @@ import { useNavigate } from "react-router-dom";
 import "../../App.css";
 import useWindowDimensions from "./useWindowDimensions";
 import CloseIcon from "@mui/icons-material/Close";
-
 export default function CTCNavBar() {
   let dimensions = useWindowDimensions();
   const [searchChecked, setSearchChecked] = React.useState(true);
   const state = useSelector((state) => state.open.open);
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const toggleDrawer = () => {
     dispatch(tiggerDrawer(!state));
@@ -107,14 +105,15 @@ const titleDiv = {
 
 const searchDiv = {
   backgroundColor: "rgba(242, 243, 244,0.2)",
-  borderRadius: 8,
+  borderRadius: 5,
   padding: 1,
   display: "flex",
   flexDirection: "row",
   flex: 1,
   position: "absolute",
   right: 10,
-  zIndex: 1,
+  alignItems: "center",
+  justifyContent: "space-around",
   "@media (max-width: 600px)": {},
 };
 const input = {
