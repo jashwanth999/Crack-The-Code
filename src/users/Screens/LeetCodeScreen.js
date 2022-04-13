@@ -4,7 +4,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import LeftDiv from "../Helpers/LeftDiv";
 import RightDiv from "../Helpers/RightDiv";
 import "../../App.css";
-import { collection, doc, onSnapshot } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { db } from "../../Api/Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { drawerListAction } from "../../Api/actions";
@@ -37,14 +43,15 @@ export default function SolutionScreen() {
   }, [id]);
 
   useEffect(() => {
-    const unsub = onSnapshot(
+    const ref = query(
       collection(db, "leetcode-solutions"),
-      (snapshot) => {
-        dispatch(
-          drawerListAction(snapshot.docs.map((doc) => doc.data().problemName))
-        );
-      }
+      orderBy("problemName")
     );
+    const unsub = onSnapshot(ref, (snapshot) => {
+      dispatch(
+        drawerListAction(snapshot.docs.map((doc) => doc.data().problemName))
+      );
+    });
     return unsub;
   }, [dispatch]);
 
