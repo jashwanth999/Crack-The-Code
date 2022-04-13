@@ -11,10 +11,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { StyleRoot } from "radium";
 //import LeftDrawer from "./LeftDrawer";
 //import { useNavigate } from "react-router-dom";
-import { Link } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { tiggerDrawer } from "../../Api/actions";
-import LeftDrawer from "./LeftDrawer";
+import { useNavigate } from "react-router-dom";
 
 /*const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -60,6 +59,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 */
 export default function CTCNavBar() {
   const state = useSelector((state) => state.open.open);
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const toggleDrawer = () => {
     dispatch(tiggerDrawer(!state));
@@ -84,29 +85,18 @@ export default function CTCNavBar() {
             <Typography
               variant="h6"
               noWrap
-              href="/"
-              onClick={() => {
-                // navigate("/");
-              }}
               style={{ cursor: "pointer" }}
               component="div"
               sx={{ flexGrow: 1, display: { xs: "block", sm: "block" } }}
             >
-              <Link
-                href="/"
-                style={{ textAlign: "center", textDecoration: "none" }}
+              <span
+                onClick={() => {
+                  navigate("/");
+                }}
+                style={{ color: "#1B93B4", fontWeight: "bold" }}
               >
-                <span style={{ color: "#1B93B4", fontWeight: "bold" }}>
-                  Crack
-                </span>{" "}
-                <span style={{ color: "#1B93B4", fontWeight: "bold" }}>
-                  The
-                </span>
-                <span style={{ color: "#1B93B4", fontWeight: "bold" }}>
-                  {" "}
-                  Company
-                </span>
-              </Link>
+                Crack The Company
+              </span>
             </Typography>
 
             {/*<Search>
@@ -122,7 +112,10 @@ export default function CTCNavBar() {
           </Toolbar>
         </AppBar>
       </Box>
-      <LeftDrawer />
+
+      <br />
+      <br />
+      <br />
     </StyleRoot>
   );
 }

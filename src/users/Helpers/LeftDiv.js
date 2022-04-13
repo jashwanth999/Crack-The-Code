@@ -1,22 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { ListItemButton, ListItemText, Typography } from "@mui/material";
+import { useParams } from "react-router-dom";
 
 export default function LeftDiv(props) {
-  const [checked, setChecked] = useState(0);
+  const { id } = useParams();
+  const text = id?.replace(/-/g, " ");
 
   return (
     <div>
-      <div style={headDiv}>
-        <img
-          style={image}
-          alt=""
-          src="https://leetcode.com/_next/static/images/logo-dark-c96c407d175e36c81e236fcfdd682a0b.png"
-        />
-        <h3 style={{ color: "white", textAlign: "center" }}>
-          LeetCode Problems
-        </h3>
-      </div>
-
+      <h3 style={{ color: "#1B93B4" }}>{props.title}</h3>
       {props.list.map((val, index) => {
         return (
           <ListItemButton
@@ -24,15 +16,14 @@ export default function LeftDiv(props) {
             component="a"
             onClick={() => {
               props.navigate(`/leetcode-solutions/${val.replace(/ /g, "-")}`);
-              setChecked(index);
             }}
           >
             <ListItemText
               style={{
-                color: checked === index ? "#596ABC" : "white",
+                color: text === val ? "#596ABC" : "white",
               }}
             >
-              <Typography style={{ fontWeight: "bold" ,fontSize:15}}>
+              <Typography style={{ fontWeight: "bold", fontSize: 15 }}>
                 {" "}
                 {props.truncate(val, 26)}
               </Typography>
@@ -46,10 +37,5 @@ export default function LeftDiv(props) {
 const headDiv = {
   display: "flex",
   flex: 1,
-};
-const image = {
-  heigth: 25,
-  width: 25,
-  objectFit: "contain",
-  margin: 6,
+  justifyContent: "center",
 };

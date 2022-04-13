@@ -1,28 +1,28 @@
 import * as React from "react";
 import { Button, Divider, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 
-export default function FieldCard() {
-  const navigate = useNavigate();
+
+export default function FieldCard(props) {
+
+
   return (
     <div style={rootDiv}>
       <div style={headDiv}>
         <img
           style={image}
           alt=""
-          src="https://leetcode.com/_next/static/images/logo-dark-c96c407d175e36c81e236fcfdd682a0b.png"
+          src={props.imageUrl}
         />
-        <h3> Leetcode solutions</h3>
+        <h3> {props.title}</h3>
       </div>
-      <Typography style={{ }}>
-        LeetCode is one of the most well-known online judge platforms that you
-        can use to practice your programming skills by solving coding questions.
-        LeetCode is one of the most well-known online judge platforms that you
-        can use to practice your programming skills by solving coding questions.
+      <Typography >
+        {props.description}
+      
+      
       </Typography>
       <Button
         onClick={() => {
-          navigate("/leetcode-solutions/1-Two-Sum");
+          props.navigate(`${props.url}`);
         }}
         style={{
           color: "#2ECC71",
@@ -39,7 +39,7 @@ export default function FieldCard() {
 }
 
 const rootDiv = {
-  margin:10
+  margin: 10,
 };
 const headDiv = {
   display: "flex",
@@ -48,11 +48,11 @@ const headDiv = {
 };
 
 const image = {
-  heigth: 20,
-  width: 20,
+  heigth: 26,
+  width: 26,
   objectFit: "contain",
   borderRadius: 5,
   padding: 4,
   marginRight: 3,
-  backgroundColor: "black",
+ 
 };
