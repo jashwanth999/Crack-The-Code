@@ -113,7 +113,6 @@ const titleDiv = {
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "center",
-  
   "@media (max-width: 600px)": {
     position: "absolute",
   },
