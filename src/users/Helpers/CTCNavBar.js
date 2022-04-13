@@ -1,63 +1,63 @@
 import * as React from "react";
-//import { styled, alpha } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
+
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-//import InputBase from "@mui/material/InputBase";
+import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
-//import SearchIcon from "@mui/icons-material/Search";
+import SearchIcon from "@mui/icons-material/Search";
 import { StyleRoot } from "radium";
-//import LeftDrawer from "./LeftDrawer";
-//import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { tiggerDrawer } from "../../Api/actions";
 import { useNavigate } from "react-router-dom";
+import "../../App.css";
+import useWindowDimensions from "./useWindowDimensions";
+import CloseIcon from "@mui/icons-material/Close";
 
-/*const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(1),
-    width: "auto",
-  },
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
+const ResponsiveStyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
+
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "12ch",
+      width: "15ch",
       "&:focus": {
         width: "20ch",
       },
     },
   },
 }));
-*/
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "@media (max-width: 600px)": {
+    display: "none",
+  },
+
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: "15ch",
+      "&:focus": {
+        width: "20ch",
+      },
+    },
+  },
+}));
+
 export default function CTCNavBar() {
+  let dimensions = useWindowDimensions();
+  const [searchChecked, setSearchChecked] = React.useState(false);
   const state = useSelector((state) => state.open.open);
   const navigate = useNavigate();
 
@@ -65,53 +65,78 @@ export default function CTCNavBar() {
   const toggleDrawer = () => {
     dispatch(tiggerDrawer(!state));
   };
+  //console.log(searchChecked);
 
   return (
     <StyleRoot>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar style={{ backgroundColor: "rgb(0, 30, 60)" }} position="fixed">
-          <Toolbar>
-            <IconButton
-              onClick={toggleDrawer}
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2, display: { sm: "none" } }}
-            >
-              <MenuIcon />
-            </IconButton>
+      <AppBar
+        style={{
+          backgroundColor: "rgb(0, 30, 60)",
+        }}
+        position="fixed"
+      >
+        <Toolbar>
+          <IconButton
+            onClick={toggleDrawer}
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="open drawer"
+            sx={{ mr: 2, display: { sm: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
 
-            <Typography
-              variant="h6"
-              noWrap
-              style={{ cursor: "pointer" }}
-              component="div"
-              sx={{ flexGrow: 1, display: { xs: "block", sm: "block" } }}
-            >
-              <span
-                onClick={() => {
-                  navigate("/");
-                }}
-                style={{ color: "#1B93B4", fontWeight: "bold" }}
+          {searchChecked || dimensions.width > 600 ? (
+            <>
+              <Typography
+                sx={{ flexGrow: 1 }}
+                variant="h6"
+                noWrap
+                component="div"
               >
-                Crack The Company
-              </span>
-            </Typography>
-
-            {/*<Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                style={menu}
+                <span
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                  style={{ color: "#1B93B4", fontWeight: "bold" }}
+                >
+                  Crack The Company
+                </span>
+              </Typography>
+              <div style={searchDiv}>
+                <IconButton
+                  onClick={() => {
+                    setSearchChecked(!searchChecked);
+                  }}
+                  style={{ marginRight: 5, paddingRight: 5 }}
+                >
+                  <SearchIcon style={{ color: "white" }} />
+                </IconButton>
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ "aria-label": "search" }}
+                />
+              </div>
+            </>
+          ) : (
+            <div style={searchDiv}>
+              <ResponsiveStyledInputBase
                 placeholder="Search…"
                 inputProps={{ "aria-label": "search" }}
               />
-  </Search>*/}
-          </Toolbar>
-        </AppBar>
-      </Box>
+              <IconButton
+                style={{ marginRight: 5, paddingRight: 5 }}
+                onClick={() => {
+                  setSearchChecked(!searchChecked);
+                }}
+              >
+                <CloseIcon style={{ color: "white" }} />
+              </IconButton>
+            </div>
+          )}
+        </Toolbar>
+      </AppBar>
 
       <br />
       <br />
@@ -119,6 +144,17 @@ export default function CTCNavBar() {
     </StyleRoot>
   );
 }
-/*const menu = {
-  "@media (max-width: 500px)": {},
-};*/
+
+const searchDiv = {
+  backgroundColor: "rgba(242, 243, 244,0.2)",
+  borderRadius: 5,
+  padding: 2,
+  position: "absolute",
+  right: 5,
+  "@media (max-width: 600px)": {
+    backgroundColor: "transparent",
+    position: "relative",
+    right: -5,
+    paddingLeft: 6,
+  },
+};

@@ -72,5 +72,5 @@ const image = {
   padding: 4,
   marginRight: 3,
   backgroundColor: "black",
-  "@media (max-width: 500px)": {},
+  "@media (max-width: 500px)": {}, 
 };

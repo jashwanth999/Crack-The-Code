@@ -27,12 +27,13 @@ const LineContent = styled.span`
 `;
 
 const WithLineNumbers = (props) => (
-  <div style={{ width: "98%",paddingLeft:10 }}>
+  <div style={{ width: "98%", paddingLeft: 10, }}>
     <Highlight
       {...defaultProps}
       theme={theme}
       code={props.code.trim()}
       language={props.language}
+    
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={style}>

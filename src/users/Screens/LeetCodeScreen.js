@@ -1,10 +1,10 @@
 import { StyleRoot } from "radium";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import LeftDiv from "../Helpers/LeftDiv";
 import RightDiv from "../Helpers/RightDiv";
 import "../../App.css";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../Api/Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { drawerListAction } from "../../Api/actions";
@@ -18,6 +18,23 @@ export default function SolutionScreen() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const problemsList = useSelector((state) => state.list.list);
+  const [problemData, setProblemData] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const { id } = useParams();
+  const text = id.replace(/ /g, " ");
+  const transformedText = `${text[0]}. ${text.substring(2).replace(/-/g, " ")}`;
+
+  useEffect(() => {
+    setLoading(true);
+    if (id) {
+      const unsub = onSnapshot(doc(db, "leetcode-solutions", id), (doc) => {
+        setProblemData(doc.data());
+        setLoading(false);
+      });
+      return unsub;
+    }
+  }, [id]);
 
   useEffect(() => {
     const unsub = onSnapshot(
@@ -30,6 +47,7 @@ export default function SolutionScreen() {
     );
     return unsub;
   }, [dispatch]);
+
   return (
     <StyleRoot>
       <div className="App" style={rootDiv}>
@@ -42,7 +60,11 @@ export default function SolutionScreen() {
           />
         </div>
         <div className="rightDiv" style={rightDiv}>
-          <RightDiv />
+          <RightDiv
+            loading={loading}
+            text={transformedText}
+            problemData={problemData}
+          />
         </div>
       </div>
       <LeftDrawer title={"Leetcode Problems"} />
