@@ -60,6 +60,7 @@ export default function CTCNavBar() {
                   fontSize: 20,
                   padding: 6,
                   margin: 0,
+                  cursor: "pointer"
                 }}
               >
                 Crack The Company
@@ -112,7 +113,7 @@ const titleDiv = {
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "center",
-  cursor: "pointer",
+  
   "@media (max-width: 600px)": {
     position: "absolute",
   },
