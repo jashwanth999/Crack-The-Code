@@ -45,6 +45,11 @@ export default function CTCNavBar() {
 
           {searchChecked || dimensions.width > 600 ? (
             <div style={titleDiv}>
+              <img
+                style={{ width: 40, height: 40 }}
+                alt=""
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAD9klEQVRoge2YQW8bRRiGn9m1qGOlUkRjUjtNI9RDBIRLQZBUoSgo/Qk9IoRyC46cE+mt7q2+pWoccSkIceQnBBGoAg0IuBCIckAoSmPXhKAKIsdRs/txqG3Zu7Pe3XgNquT3lm9nv30f78zk3YGeeuqpp/9T6r94SCYlXwNXm2sCbxdK6n6nvY1OG/jpOmIClx1lS074KYr+XQc4P8w40O8ob67sq8Mo+ncdAJs3NNXvo2rfdQCBN11FxXdR9e/+G9AAGNYzAvDhoJwFXmquCfxTKrMV1TNCAWRSks2m5WLQ8dUYrwNmS1Hxw+coSzc+m5aLmZRkw3gKDJBJSw5YsoT7mSF5Mcg9tuGePkr002cuLSMWfAkszZ+X20F9BQLIpCWHcLP25ygGa4EgxL0DiWYHmkvLiAFrCJcARLEYFMIXwGG+rlEMPgnQ3wVgmW4AQ/isbr4uUSzW3npbtQXwMA+wqyxm2907PywXgGFH+eFHD9Wec6zAe8DvribCTb834QngY3767h/qt3aNxdbs/+jnf6GkdgSm0UD4TSctQKfmaw8OvIDh9BAugNmh6u1OzdfMho4QfhCzyeqSs94CMJXYXv32z58XK1bVOS6U+VoCfc1RtiyLH/3u9YI4so7Z+GszeyW+9UALMJXYXt2r7M9UrWMeHGzSBBHKPMDgBV7BkUCV8EvQBOqEOLKO2ah5KlUPJpohDIAr8a2v9ir7M/ViA+LkqBTWPEDMcs9/CRng6hCVk+ruRusP2gJhABiG8SRMcz91O4ECKGWcQA1gvTJ2bTiR/KJ+MW6eYfLcOIlYX0pM1uZfkEtejTzUcQL9ICWjCtYSsfjIxLlxEma8cS3dl1z/5mjsLXB8E08ltlcPjv+emXTcQIh1MJeUfiPGY1pD3GG5xIBXiPMyDzTiSn0dDDx3tmEeHLvQemXs2uTgq3mHeYCRoG/CMDUJFO8EGsQ8QJ95honnx+80m3cBAHxcjt9AcUvTOxCEhEigQc3XeuTv7ccXnHXtf+LlosqJ4obmki+EEjeAHWAB+5m/+0jp/HhnoUJR5U8JESiBNqudeYScl3nwSaOFosq3mU73nMUwCbRZCj5FZ15xa/mR0j2/Id/vAY/ptIPN+86xYRJos2zFuyhadzght1xUnX0P1OWYTjvYTC+XlS6/uwOc8j8DWimqXRumGxBCzu+XryvwN3GhqPLAgqm4qjX/1Kx7B7KD7UArRbVrwjvAQlDzTx8Zka4j5lCKx7SGOMs+YSCqY0SdIjsX6jSBnlaRAUSRQE+jKE/m3EcoARZwp4oMQPsNHOEZqJciAZhLSj/Cy47yYbnMr1H0b6dIADpNoD311FNPz67+BSmUy2+Mz/pSAAAAAElFTkSuQmCC"
+              />
               <span
                 onClick={() => {
                   navigate("/");
@@ -53,6 +58,7 @@ export default function CTCNavBar() {
                   color: "#1B93B4",
                   fontWeight: "bold",
                   fontSize: 20,
+                  padding: 6,
                 }}
               >
                 Crack The Company
@@ -78,7 +84,7 @@ export default function CTCNavBar() {
             </IconButton>
           ) : (
             <div style={searchDiv}>
-              <input placeholder="search" style={input} />
+              <input type="text" placeholder="search" style={input} />
               <IconButton
                 onClick={() => {
                   setSearchChecked(!searchChecked);
@@ -99,8 +105,10 @@ export default function CTCNavBar() {
 }
 const titleDiv = {
   width: "100%",
-  textAlign: "center",
-  position: "absolute",
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
 };
 
 const searchDiv = {
