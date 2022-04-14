@@ -1,5 +1,5 @@
 import { Paper } from "@mui/material";
-import ExampleCode from "../../Helpers/ExampleCode";
+import ExampleCode from "../../Helpers/exampleCode";
 import YoutubeEmbed from "../../Helpers/YoutubeEmbed";
 import Title from "./RightDivComponents/Title";
 import ProblemStatement from "./RightDivComponents/ProblemStatement";

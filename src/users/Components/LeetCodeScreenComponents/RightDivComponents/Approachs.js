@@ -1,7 +1,7 @@
 import { Paper, Typography } from "@mui/material";
 import React from "react";
 import { colorList } from "../../../Helpers/helpersData";
-import ExampleCode from "../../../Helpers/ExampleCode";
+import ExampleCode from "../../../Helpers/exampleCode";
 import Tags from "./Tags";
 export default function Approachs(props) {
   return (
