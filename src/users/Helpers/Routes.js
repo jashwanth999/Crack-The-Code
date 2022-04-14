@@ -11,7 +11,8 @@ export default function RoutesComponent() {
       <Route path="/" element={<Home />} />
       <Route path="/leetcode-solutions/:id" element={<LeetCodeScreen />} />
       <Route
-        path="/cs-fundamentals/:subject-name"
+        exact={true}
+        path="/cs-fundamentals/:subjectName/:subTopicName"
         element={<ComputerScienceFundamentals />}
       />
       <Route path="/Admin" element={<AddLeetcode />} />

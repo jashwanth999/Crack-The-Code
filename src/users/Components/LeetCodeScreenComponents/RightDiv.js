@@ -1,22 +1,11 @@
 import { Paper } from "@mui/material";
-import ExampleCode from "./exampleCode";
-import YoutubeEmbed from "./YoutubeEmbed";
-import Title from "../Components/RightDivComponents/Title";
-import ProblemStatement from "../Components/RightDivComponents/ProblemStatement";
-import Approachs from "../Components/RightDivComponents/Approachs";
+import ExampleCode from "../../Helpers/ExampleCode";
+import YoutubeEmbed from "../../Helpers/YoutubeEmbed";
+import Title from "./RightDivComponents/Title";
+import ProblemStatement from "./RightDivComponents/ProblemStatement";
+import Approachs from "./RightDivComponents/Approachs";
 import ReactLoading from "react-loading";
-import Tags from "../Components/RightDivComponents/Tags";
-const colorList = {
-  Medium: "#F39C12",
-  Hard: "#E00E0E",
-  Easy: "#27AE60",
-  Array: "#EC7063",
-  "Two Pointer": "#5499C7",
-  "Hash Map": "#48C9B0",
-  String: "#B03A2E ",
-  "Number theory": "#34495E",
-  "Linked List": "#8E44AD",
-};
+import {colorList} from '../../Helpers/helpersData'
 export default function RightDiv(props) {
   if (props.loading)
     return (
@@ -39,7 +28,7 @@ export default function RightDiv(props) {
         text={props.text}
         difficultSpan={difficultSpan}
       />
-      <Tags colorList={colorList} problemData={props.problemData} />
+     
       <ProblemStatement
         problemData={props.problemData}
         headerStyle={headerStyle}

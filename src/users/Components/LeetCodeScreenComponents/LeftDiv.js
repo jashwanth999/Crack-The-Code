@@ -7,7 +7,7 @@ export default function LeftDiv(props) {
   const text = id?.replace(/-/g, " ");
 
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <h3 style={{ color: "#1B93B4" }}>{props.title}</h3>
       {props.list.map((val, index) => {
         return (
@@ -25,7 +25,7 @@ export default function LeftDiv(props) {
             >
               <Typography style={{ fontWeight: "bold", fontSize: 15 }}>
                 {" "}
-                {props.truncate(val, 26)}
+                {props.truncate(val, 25)}
               </Typography>
             </ListItemText>
           </ListItemButton>
@@ -34,8 +34,3 @@ export default function LeftDiv(props) {
     </div>
   );
 }
-const headDiv = {
-  display: "flex",
-  flex: 1,
-  justifyContent: "center",
-};

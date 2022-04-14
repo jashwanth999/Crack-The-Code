@@ -4,11 +4,10 @@ import FieldCard from "../Components/HomeComponents/FieldCard";
 import "../../App.css";
 import { useNavigate } from "react-router-dom";
 import LeftDrawer from "../Helpers/LeftDrawer";
-import LeftDiv from "../Helpers/LeftDiv";
+import LeftDiv from "../Components/LeetCodeScreenComponents/LeftDiv";
 import { useDispatch } from "react-redux";
 import { drawerListAction } from "../../Api/actions";
 export default function Home() {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   React.useEffect(() => {
@@ -27,7 +26,7 @@ export default function Home() {
               imageUrl={
                 "https://img.icons8.com/external-flaticons-flat-flat-icons/64/000000/external-computer-science-computer-science-flaticons-flat-flat-icons.png"
               }
-              url={"/cs-fundamentals/operating-systems"}
+              url={"/cs-fundamentals/OOPS-Concept/Class-and-Objects"}
               title={"Computer Science Fundamentals"}
               description={`  
              Operating Systems , DBMS , Computer Network , OOPs Concept`}

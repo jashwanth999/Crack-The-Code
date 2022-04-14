@@ -1,6 +1,9 @@
+
 import { Paper, Typography } from "@mui/material";
 import React from "react";
-import ExampleCode from "../../Helpers/exampleCode";
+import { colorList } from "../../../Helpers/helpersData";
+import ExampleCode from "../../../Helpers/ExampleCode";
+import Tags from "./Tags";
 export default function Approachs(props) {
   return (
     <>
@@ -16,6 +19,8 @@ export default function Approachs(props) {
                 <br />
               </Typography>
             </Paper>
+
+            <Tags colorList={colorList} problemData={props.problemData} />
             <ExampleCode
               lineNum={true}
               language={data.language}

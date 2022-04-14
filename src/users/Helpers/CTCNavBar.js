@@ -60,7 +60,7 @@ export default function CTCNavBar() {
                   fontSize: 20,
                   padding: 6,
                   margin: 0,
-                  cursor: "pointer"
+                  cursor: "pointer",
                 }}
               >
                 Crack The Company
@@ -106,15 +106,21 @@ const iconButton = {
   position: "absolute",
   right: 10,
   marginTop: 5,
+  flex: 1,
+  display: "flex",
 };
 const titleDiv = {
-  width: "100%",
+  flex: 1,
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "center",
+  textAlign: "center",
   "@media (max-width: 600px)": {
-    position: "absolute",
+     position:'absolute',
+     left:66
+   
+     
   },
 };
 

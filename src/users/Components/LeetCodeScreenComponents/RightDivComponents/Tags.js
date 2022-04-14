@@ -11,7 +11,7 @@ export default function Tags(props) {
             style={{ ...spanStyle, backgroundColor: props.colorList[tag] }}
           >
             {" "}
-            <Typography style={{ fontWeight: "bold" }}> {tag}</Typography>
+            <Typography style={{  }}> {tag}</Typography>
           </span>
         );
       })}
@@ -19,7 +19,7 @@ export default function Tags(props) {
   );
 }
 const spanStyle = {
-  padding: 8,
+  padding:6,
   margin: 5,
   borderRadius: 5,
   color: "white",
