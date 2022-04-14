@@ -17,7 +17,6 @@ import { drawerListAction } from "../../Api/actions";
 import LeftDrawer from "../Helpers/LeftDrawer";
 import RightDiv from "../Components/LeetCodeScreenComponents/RightDiv";
 import { truncate } from "../Helpers/helpersData";
-//import LeftDrawer from "../Helpers/LeftDrawer";
 
 export default function SolutionScreen() {
   const navigate = useNavigate();
