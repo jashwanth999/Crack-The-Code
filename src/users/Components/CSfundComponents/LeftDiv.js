@@ -23,7 +23,7 @@ const list = [
   },
   {
     name: "Computer Network",
-    subList: ["Topology", "OSI Model", "IPV4 and IPV6", "TCP/IP Model"],
+    subList: ["Topology", "OSI Model", "IPV4 and IPV6", "TCP Model"],
   },
 ];
 
@@ -39,6 +39,7 @@ export default function LeftDiv(props) {
         return (
           <LeftTitleList
             key={index}
+            index={index}
             truncate={props.truncate}
             title={val.name}
             subList={val.subList}

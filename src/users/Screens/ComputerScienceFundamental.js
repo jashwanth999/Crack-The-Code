@@ -1,11 +1,35 @@
 import { StyleRoot } from "radium";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import LeftDrawer from "../Helpers/LeftDrawer";
 import LeftDiv from "../Components/CSfundComponents/LeftDiv";
 import { truncate } from "../Helpers/helpersData";
+import RightDiv from "../Components/CSfundComponents/RightDiv";
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from "../../Api/Firebase";
 export default function ComputerScienceFundamentals() {
   const navigate = useNavigate();
+  const { subTopicName } = useParams();
+  const [loading, setLoading] = useState(false);
+  const [problemData, setProblemData] = useState(null);
+
+  //const text = id.replace(/ /g, " ");
+  //const transformedText = `${text[0]}. ${text.substring(2).replace(/-/g, " ")}`;
+  useEffect(() => {
+    setLoading(true);
+    if (subTopicName) {
+      const unsub = onSnapshot(
+        doc(db, "CS-fundamentals", subTopicName),
+        (doc) => {
+          setProblemData(doc.data());
+          setLoading(false);
+        }
+      );
+      return unsub;
+    }
+  }, [subTopicName]);
+  
+
   return (
     <StyleRoot>
       <div className="App" style={rootDiv}>
@@ -16,8 +40,12 @@ export default function ComputerScienceFundamentals() {
             navigate={navigate}
           />
         </div>
-        <div className="rightDiv" style={rightDiv}></div>
+        <div className="rightDiv" style={rightDiv}>
+
+          <RightDiv problemdata={problemData} loading={loading} />
+        </div>
       </div>
+
       <LeftDrawer
         component={
           <LeftDiv

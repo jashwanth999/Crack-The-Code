@@ -97,6 +97,8 @@ export default function CTCNavBar() {
       <br />
       <br />
       <br />
+      
+   
     </StyleRoot>
   );
 }
@@ -117,10 +119,8 @@ const titleDiv = {
   justifyContent: "center",
   textAlign: "center",
   "@media (max-width: 600px)": {
-     position:'absolute',
-     left:66
-   
-     
+    position: "absolute",
+    left: 66,
   },
 };
 

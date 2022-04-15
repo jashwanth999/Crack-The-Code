@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ListItemButton, ListItemText, Typography } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { ExpandMore } from "@mui/icons-material";
 export default function LeftTitleList(props) {
   const [expand, setExpand] = useState(false);
+  useEffect(() => {
+    if (props.index === 0) setExpand(true);
+  }, []);
+
   return (
     <div>
       <ListItemButton

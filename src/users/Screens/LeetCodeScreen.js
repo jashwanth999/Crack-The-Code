@@ -17,18 +17,15 @@ import { drawerListAction } from "../../Api/actions";
 import LeftDrawer from "../Helpers/LeftDrawer";
 import RightDiv from "../Components/LeetCodeScreenComponents/RightDiv";
 import { truncate } from "../Helpers/helpersData";
-
 export default function SolutionScreen() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const problemsList = useSelector((state) => state.list.list);
   const [problemData, setProblemData] = useState("");
   const [loading, setLoading] = useState(false);
-
   const { id } = useParams();
   const text = id.replace(/ /g, " ");
   const transformedText = `${text[0]}. ${text.substring(2).replace(/-/g, " ")}`;
-
   useEffect(() => {
     setLoading(true);
     if (id) {

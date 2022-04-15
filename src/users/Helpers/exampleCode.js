@@ -2,9 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
-
-
-
 const Pre = styled.pre`
   text-align: left;
   margin: 1em 0;
@@ -27,7 +24,6 @@ const LineNo = styled.span`
 const LineContent = styled.span`
   display: table-cell;
 `;
-
 const WithLineNumbers = (props) => (
   <div style={{ width: "98%", paddingLeft: 10, }}>
     <Highlight
@@ -38,7 +34,7 @@ const WithLineNumbers = (props) => (
     
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <Pre className={className} style={style}>
+        <Pre className={className} style={{...style,fontSize:16}}>
           {tokens.map((line, i) => (
             <Line key={i} {...getLineProps({ line, key: i })}>
               {props.lineNum && <LineNo>{i + 1}</LineNo>}
