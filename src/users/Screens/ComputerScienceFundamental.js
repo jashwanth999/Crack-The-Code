@@ -9,7 +9,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../Api/Firebase";
 export default function ComputerScienceFundamentals() {
   const navigate = useNavigate();
-  const { subTopicName } = useParams();
+  const { subjectName, subTopicName } = useParams();
   const [loading, setLoading] = useState(false);
   const [problemData, setProblemData] = useState(null);
 
@@ -19,7 +19,7 @@ export default function ComputerScienceFundamentals() {
     setLoading(true);
     if (subTopicName) {
       const unsub = onSnapshot(
-        doc(db, "CS-fundamentals", subTopicName),
+        doc(db, "CS-fundamentals", subjectName, "subtopics", subTopicName),
         (doc) => {
           setProblemData(doc.data());
           setLoading(false);
@@ -27,8 +27,7 @@ export default function ComputerScienceFundamentals() {
       );
       return unsub;
     }
-  }, [subTopicName]);
-  
+  }, [subTopicName, subjectName]);
 
   return (
     <StyleRoot>
@@ -41,7 +40,6 @@ export default function ComputerScienceFundamentals() {
           />
         </div>
         <div className="rightDiv" style={rightDiv}>
-
           <RightDiv problemdata={problemData} loading={loading} />
         </div>
       </div>

@@ -5,7 +5,7 @@ import Title from "./RightDivComponents/Title";
 import ProblemStatement from "./RightDivComponents/ProblemStatement";
 import Approachs from "./RightDivComponents/Approachs";
 import ReactLoading from "react-loading";
-import {colorList} from '../../Helpers/helpersData'
+import { colorList } from "../../Helpers/helpersData";
 export default function RightDiv(props) {
   if (props.loading)
     return (
@@ -25,10 +25,9 @@ export default function RightDiv(props) {
       <Title
         colorList={colorList}
         problemData={props.problemData}
-        text={props.text}
         difficultSpan={difficultSpan}
       />
-     
+
       <ProblemStatement
         problemData={props.problemData}
         headerStyle={headerStyle}

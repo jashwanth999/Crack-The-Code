@@ -40,7 +40,7 @@ export default function SolutionScreen() {
   useEffect(() => {
     const ref = query(
       collection(db, "leetcode-solutions"),
-      orderBy("problemName")
+      orderBy("no")
     );
     const unsub = onSnapshot(ref, (snapshot) => {
       dispatch(

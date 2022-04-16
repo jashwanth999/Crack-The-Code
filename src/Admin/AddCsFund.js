@@ -2,63 +2,82 @@ import { doc, setDoc } from "firebase/firestore";
 import React from "react";
 import { db } from "../Api/Firebase";
 const data = {
-  subTopicName: "Encapsulation",
-  description: `Encapsulation is wraping or bundling data members and functions inside a class
-
-1.The data members should be labeled as private using the private access specifiers
-2.The member function which manipulates the data members should be labeled as public using the public access specifier
+  subTopicName: "Class and Objects",
+  description: `Class is blueprint or template for an Object
+  Class Animal has features
+  1.breed
+  2.Color
+  3.food
+  
+  Class Vehicle has features
+  1.speed
+  2.Color
+  
+  To call a class objects are used .For class Animal Cat, Dog are objects .For class Vehicle Car,Bike are objects
     `,
-  exampleCode: {
-    code: `
+  exampleCodesList: [
+    {
+      exampleCodeName: "Calling class using objects",
+      exampleCodeDescription: ``,
+      exampleCode: {
+        code: `
 #include<bits/stdc++.h>
 using namespace std;
-  
-class Encapsulation
-    {
-        private:
-            // data hidden from outside world
-            int x;
-              
-        public:
-            // function to set value of 
-            // variable x
-            void set(int a)
-            {
-                x =a;
-            }
-              
-            // function to return value of
-            // variable x
-            int get()
-            {
-                return x;
-            }
+
+class Animal {
+public:
+    string animalName;
+    Animal(string a) {
+    animalName=a; 
+    }   
+    void eats(string foodName) {
+        cout << animalName<<" eats " << foodName;
+
+    }
+
 };
-      
-    // main function
-int main()
-    {
-        Encapsulation obj;
-          
-        obj.set(5);
-          
-        cout<<obj.get();
-        return 0;
-}
-    `,
-    language: "cpp",
-  },
-  output: {
-    code: `
-2
+int  main() {
+
+    // declaring objects and passing parameters as animal Name
+    Animal dog("dog");
+    Animal cat("cat");
+
+    // Calling function
+
+    dog.eats("cat");
+    cat.eats("mouse");
+
+  return 0;
+   }
+        
+  `,
+        language: "cpp",
+      },
+      output: {
+        code: `
+dog eats cat
+cat eats mouse
       `,
-    language: "jsx",
-  },
+        language: "jsx",
+      },
+    },
+  ],
+  image: "https://www.guru99.com/images/java/052016_0704_ObjectsandC6.jpg",
+  timestamp: new Date(),
 };
 export default function AddCS() {
   const addProblem = () => {
     try {
-      setDoc(doc(db, "CS-fundamentals", "Encapsulation"), data);
+      setDoc(
+        doc(
+          db,
+          "CS-fundamentals",
+          "OOPS-Concept",
+          "subtopics",
+          "Class-and-Objects"
+        ),
+        data
+      );
     } catch (error) {
       alert(error.message);
     }

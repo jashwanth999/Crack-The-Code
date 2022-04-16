@@ -16,36 +16,58 @@ export default function RightDiv(props) {
         />
       </div>
     );
-
-  console.log(props.problemdata);
   return (
     <div style={rootDiv}>
-      <h3 style={{ color: "#3498DB" }}>{props.problemdata?.subTopicName}</h3>
-
-      <h3 style={headerStyle}>Description</h3>
-      <Paper elevation={0} style={descPaper}>
-        <Typography style={{ whiteSpace: "pre-line" }}>
-          {props.problemdata?.description}
-        </Typography>
-      </Paper>
-      <h3 style={headerStyle}>Example Code</h3>
-      {props.problemdata?.exampleCode && (
-        <ExampleCode
-          lineNum={true}
-          code={props.problemdata?.exampleCode?.code}
-          language={props.problemdata?.exampleCode?.language}
-        />
+      <h2 style={{ color: "#3498DB" }}>{props.problemdata?.subTopicName}</h2>
+      {props.problemdata?.description && (
+        <>
+          <h3 style={headerStyle}>Description</h3>
+          <Paper elevation={0} style={descPaper}>
+            <Typography style={{ whiteSpace: "pre-line" }}>
+              {props.problemdata?.description}
+            </Typography>
+          </Paper>
+        </>
       )}
 
-      <h3 style={headerStyle}>Output</h3>
-
-      {props.problemdata?.output && (
-        <ExampleCode
-          lineNum={false}
-          code={props.problemdata?.output?.code}
-          language={props.problemdata?.output?.language}
-        />
+      {props.problemdata?.image && (
+        <div>
+          <img
+            style={{ objectFit: "contain", width: 370 }}
+            alt=""
+            src={props.problemdata.image}
+          />
+        </div>
       )}
+      {props.problemdata?.exampleCodesList &&
+        props.problemdata.exampleCodesList.map(
+          (data, index) =>
+            data.exampleCode &&
+            data.output && (
+              <div key={index}>
+                <h3 style={headerStyle}>{data.exampleCodeName}</h3>
+                {data.exampleCodeDescription && (
+                  <Paper elevation={0} style={descPaper}>
+                    <Typography style={{ whiteSpace: "pre-line" }}>
+                      {data.exampleCodeDescription}
+                    </Typography>
+                  </Paper>
+                )}
+
+                <ExampleCode
+                  lineNum={true}
+                  code={data.exampleCode.code}
+                  language={data.exampleCode.language}
+                />
+                <h4 style={output}>output:</h4>
+                <ExampleCode
+                  lineNum={false}
+                  code={data.output.code}
+                  language={data.output.language}
+                />
+              </div>
+            )
+        )}
     </div>
   );
 }
@@ -66,6 +88,13 @@ const rootDiv = {
 const headerStyle = {
   margin: 10,
   borderLeft: "solid #2E86C1 4px",
+  paddingTop: 0,
+  paddingLeft: 5,
+  paddingBottom: 0,
+  textAlign: "left",
+};
+const output = {
+  margin: 10,
   paddingTop: 0,
   paddingLeft: 5,
   paddingBottom: 0,

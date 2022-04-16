@@ -3,7 +3,7 @@ import React from "react";
 export default function Title(props) {
   return (
     <>
-      <h2 style={{ color: "#3498DB" }}>{props.text}</h2>
+      <h2 style={{ color: "#3498DB" }}>{props.problemData.problemName}</h2>
       <span
         style={{
           ...props.difficultSpan,
