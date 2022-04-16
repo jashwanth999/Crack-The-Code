@@ -34,7 +34,7 @@ const WithLineNumbers = (props) => (
     
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <Pre className={className} style={{...style,fontSize:16}}>
+        <Pre className={className} style={{...style,fontSize:15}}>
           {tokens.map((line, i) => (
             <Line key={i} {...getLineProps({ line, key: i })}>
               {props.lineNum && <LineNo>{i + 1}</LineNo>}

@@ -2,97 +2,116 @@ import { doc, setDoc } from "firebase/firestore";
 import React from "react";
 import { db } from "../Api/Firebase";
 const data = {
-  problemName: "2 Add Two Numbers",
+  problemName: "36 Valid Sudoku",
+  no: 36,
   difficult: "Medium",
-  problemStatement: `You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+  problemStatement: `
+  Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
 
-  You may assume the two numbers do not contain any leading zero, except the number 0 itself.`,
+  1.Each row must contain the digits 1-9 without repetition.
+  2.Each column must contain the digits 1-9 without repetition.
+  3.Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+  `,
   testCases: {
     code: `
-Input: l1 = [2,4,3], l2 = [5,6,4]
-Output: [7,0,8]
-Explanation: 342 + 465 = 807.
+    Input: board = 
+    [["5","3",".",".","7",".",".",".","."]
+    ,["6",".",".","1","9","5",".",".","."]
+    ,[".","9","8",".",".",".",".","6","."]
+    ,["8",".",".",".","6",".",".",".","3"]
+    ,["4",".",".","8",".","3",".",".","1"]
+    ,["7",".",".",".","2",".",".",".","6"]
+    ,[".","6",".",".",".",".","2","8","."]
+    ,[".",".",".","4","1","9",".",".","5"]
+    ,[".",".",".",".","8",".",".","7","9"]]
+    Output: true
 
 
-Input: l1 = [0], l2 = [0]
-Output: [0]
+    Input: board = 
+    [["8","3",".",".","7",".",".",".","."]
+    ,["6",".",".","1","9","5",".",".","."]
+    ,[".","9","8",".",".",".",".","6","."]
+    ,["8",".",".",".","6",".",".",".","3"]
+    ,["4",".",".","8",".","3",".",".","1"]
+    ,["7",".",".",".","2",".",".",".","6"]
+    ,[".","6",".",".",".",".","2","8","."]
+    ,[".",".",".","4","1","9",".",".","5"]
+    ,[".",".",".",".","8",".",".","7","9"]]
+    Output: false
+    Explanation: Same as Example 1, except with the 5 in the top left corner being modified to 8. 
+    Since there are two 8's in the top left 3x3 sub-box, it is invalid.
 `,
     language: "jsx",
   },
 
   approachList: [
     {
-      approachName: "Two Pointer",
+      approachName: "BackTracking",
       code: `
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
-class Solution {
-public:
-ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-    ListNode* p=l1;
-    ListNode* q=l2;
-    int c=0;
-    ListNode* curr=NULL;
-    ListNode* res=NULL;
-    while(p or q)
-    {
-        int s=c+(p?p->val:0)+(q?q->val:0);
-        c=(s>=10?1:0);
-        s=s%10;
-        ListNode* temp= new ListNode(s);
-        if (res==NULL) res=temp;
-        else curr->next=temp;
-        curr=temp;
-        if(p) p=p->next;
-        if(q) q=q->next;
-        
-    }
-    
-    if(c>0){
-        curr->next=new ListNode(1);
-    }
-    return res;
-    
-    
-  }
-};
+      class Solution {
+        public:
+            
+            bool isValid(vector<vector<char>>& board,int r, int c,char x ){
+                  board[r][c]='.';
+                
+                // checking row and col 
+                  for(int i=0;i<9;i++){
+                      
+                      if(board[i][c]==x) return 0;
+                      if(board[r][i]==x) return 0;
+                      
+                  }
+                
+                // checking 3*3 box 
+                
+                  for(int i=0;i<3;i++){
+                      for(int j=0;j<3;j++){
+                           if(board[r/3*3+i][c/3*3+j]==x) return 0;
+                      }
+                  }
+                board[r][c]=x;
+                return 1;
+            }
+            bool isValidSudoku(vector<vector<char>>& board) {
+                
+                for(int i=0;i<9;i++){
+                    for(int j=0;j<9;j++){
+                         if(board[i][j]!='.' && !isValid(board,i,j,board[i][j])) return 0;
+                    }
+                }
+                
+                return 1;
+                
+            }
+        };
         `,
       language: "cpp",
       complexity: {
-        timeComplexity: "O(n)",
+        timeComplexity: "O(n^2)",
         timeDesc: `
-       Two Pointers are used single while loop (Line Num = 19 - 31)
-        Extra spaces are used for two ListNodes
+    Traversing 9*9 matrix and checking every column ,row and every 3*3 matrix needs n^2 time
+   
          `,
-        spaceComplexity: "O(n)",
-        spaceDesc: " Extra spaces are used for two ListNodes",
+        spaceComplexity: "O(1)",
+        spaceDesc: "No Extra space is used",
       },
       approachDescription: `
-Traverse both lists to the end and add preceding zeros in the list with lesser digits. 
-Then call a recursive function on the start nodes of both lists which calls itself 
-for the next nodes of both lists till it gets to the end.   
-This function creates a node for the sum of the current digits and returns the carry.
+Traverse 9*9 matrix 
+   check every column,row and 3*3 matrix 
+
 
       `,
     },
   ],
-  links: "https://youtube.com/embed/yubRKwixN-U",
-  tags: ["Linked List", "Two Pointer"],
+  links: "https://www.youtube.com/embed/rJ9NFK9s_mI",
+  tags: ["BackTracking"],
   timestamp: new Date(),
 };
 
 export default function AddLeetcode() {
   const addProblem = () => {
     try {
-      setDoc(doc(db, "leetcode-solutions", "2-Add-Two-Numbers"), data);
+      setDoc(doc(db, "leetcode-solutions", "36-Valid-Sudoku"), data);
     } catch (error) {
       alert(error.message);
     }

@@ -31,9 +31,9 @@ export default function RightDiv(props) {
       )}
 
       {props.problemdata?.image && (
-        <div>
+        <div >
           <img
-            style={{ objectFit: "contain", width: 370 }}
+            style={{ objectFit: "contain", width: 340 }}
             alt=""
             src={props.problemdata.image}
           />

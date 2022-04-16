@@ -13,11 +13,10 @@ export default function Approachs(props) {
               Approach {index + 1} - {data.approachName}{" "}
             </h3>
             <Paper style={props.statementDiv} elevation={0}>
-              <ExampleCode
-                lineNum={false}
-                language={"text"}
-                code={data.approachDescription}
-              />
+              <Typography style={{ padding: 5, whiteSpace: "pre-wrap" }}>
+                {" "}
+                {data.approachDescription}
+              </Typography>
             </Paper>
 
             <Tags colorList={colorList} problemData={props.problemData} />
