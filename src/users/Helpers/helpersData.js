@@ -3,7 +3,7 @@ export const colorList = {
   Hard: "#E00E0E",
   Easy: "#27AE60",
   Array: "#EC7063",
-  "Two Pointer": "#5499C7",
+  "Two Pointers": "#5499C7",
   "Hash Map": "#48C9B0",
   String: "#B03A2E ",
   "Number theory": "#34495E",

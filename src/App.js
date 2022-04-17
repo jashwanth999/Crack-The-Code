@@ -6,7 +6,9 @@ function App() {
   return (
     <div className="App">
       <CTCNavBar />
-    
+      <br />
+      <br />
+      <br />
       <RoutesComponent />
     </div>
   );

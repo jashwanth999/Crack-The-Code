@@ -4,7 +4,7 @@ import React from "react";
 export default function Tags(props) {
   return (
     <div style={{ display: "flex", flexDirection: "row", margin: 5 }}>
-      {props.problemData?.tags?.map((tag, index) => {
+      {props.data?.tags?.map((tag, index) => {
         return (
           <span
             key={index}

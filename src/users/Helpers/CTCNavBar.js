@@ -28,8 +28,9 @@ export default function CTCNavBar() {
         style={{
           backgroundColor: "rgb(0, 30, 60)",
           textAlign: "center",
+
+          zIndex: 1,
         }}
-        position="fixed"
       >
         <Toolbar>
           <IconButton
@@ -94,11 +95,6 @@ export default function CTCNavBar() {
           )}
         </Toolbar>
       </AppBar>
-      <br />
-      <br />
-      <br />
-      
-   
     </StyleRoot>
   );
 }

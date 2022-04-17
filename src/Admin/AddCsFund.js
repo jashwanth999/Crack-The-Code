@@ -83,7 +83,7 @@ export default function AddCS() {
     }
   };
   return (
-    <div>
+    <div style={{ height: "92vh" }}>
       <button onClick={addProblem}> AddCS</button>
     </div>
   );

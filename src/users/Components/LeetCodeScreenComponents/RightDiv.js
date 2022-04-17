@@ -6,6 +6,8 @@ import ProblemStatement from "./RightDivComponents/ProblemStatement";
 import Approachs from "./RightDivComponents/Approachs";
 import ReactLoading from "react-loading";
 import { colorList } from "../../Helpers/helpersData";
+import Editor from "../../Helpers/Editor";
+import CodeView from "../../Helpers/CodeView";
 export default function RightDiv(props) {
   if (props.loading)
     return (
@@ -35,11 +37,13 @@ export default function RightDiv(props) {
       />
 
       {props.problemData.testCases && (
-        <ExampleCode
-          lineNum={false}
-          code={props.problemData?.testCases?.code}
-          language={props.problemData?.testCases?.language}
-        />
+        <div style={{ textAlign: "left", margin: 10 }}>
+          <ExampleCode
+            lineNum={false}
+            code={props.problemData?.testCases}
+            language={"text"}
+          />
+        </div>
       )}
       <br />
       <Approachs

@@ -29,7 +29,7 @@ export default function SolutionScreen() {
   useEffect(() => {
     setLoading(true);
     if (id) {
-      const unsub = onSnapshot(doc(db, "leetcode-solutions", id), (doc) => {
+      const unsub = onSnapshot(doc(db, "leetcode-sols", id), (doc) => {
         setProblemData(doc.data());
         setLoading(false);
       });
@@ -38,10 +38,7 @@ export default function SolutionScreen() {
   }, [id]);
 
   useEffect(() => {
-    const ref = query(
-      collection(db, "leetcode-solutions"),
-      orderBy("no")
-    );
+    const ref = query(collection(db, "leetcode-sols"), orderBy("no"));
     const unsub = onSnapshot(ref, (snapshot) => {
       dispatch(
         drawerListAction(snapshot.docs.map((doc) => doc.data().problemName))
@@ -50,6 +47,7 @@ export default function SolutionScreen() {
     return unsub;
   }, [dispatch]);
 
+  console.log(problemData);
   return (
     <StyleRoot>
       <div className="App" style={rootDiv}>
