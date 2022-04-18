@@ -24,7 +24,7 @@ const LineContent = styled.span`
   display: table-cell;
 `;
 const WithLineNumbers = (props) => (
-  <div style={{ width: "98%"}}>
+  <div >
     <Highlight
       {...defaultProps}
       theme={theme}

@@ -5,7 +5,7 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import ExampleCode from "./exampleCode";
-import CodeView from "./CodeView";
+//import CodeView from "./CodeView";
 export default function CodeTab(props) {
   const [value, setValue] = React.useState("cpp");
 
@@ -17,7 +17,7 @@ export default function CodeTab(props) {
   return (
     <Box sx={{  typography: "body1",}}>
       <TabContext value={value}>
-        <Box sx={{}}>
+        
           <TabList onChange={handleChange} aria-label="lab API tabs example">
             <Tab
               style={{ color: "#1B93B4", fontWeight: "bold" }}
@@ -35,7 +35,7 @@ export default function CodeTab(props) {
               value="python"
             />
           </TabList>
-        </Box>
+     
         <TabPanel   value="cpp">
           {props.data && (
             <ExampleCode
