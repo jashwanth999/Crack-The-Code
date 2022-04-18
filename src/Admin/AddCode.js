@@ -25,15 +25,8 @@ export default function AddCode() {
   const [probStatement, setProbStatement] = useState(``);
   const [testCases, setTestCases] = useState(``);
 
-  const [approachDescription, setApproachDescription] = useState(``);
-  const [cppValue, setCppValue] = useState(``);
-  const [javaValue, setJavaValue] = useState(``);
-  const [pythonValue, setPythonValue] = useState(``);
-  const [timeComplexity, setTimeComplexity] = useState(``);
-  const [spaceComplexity, setSpaceComplexity] = useState(``);
-
   const addApproach = (index, data) => {
-    appoaches[index] = data;
+   // appoaches[index] = data;
 
     setApproaches([...appoaches, {}]);
   };
@@ -56,14 +49,15 @@ export default function AddCode() {
     timestamp: new Date(),
   };
   const post = () => {
-    try {
-      setDoc(
-        doc(db, "leetcode-sols", probName.replace(/ /g, "-")),
-        problemData
-      );
-    } catch (error) {
-      alert(error.message);
-    }
+    if (!probName || !probNumber || probStatement)
+      try {
+        setDoc(
+          doc(db, "leetcode-sols", probName.replace(/ /g, "-")),
+          problemData
+        );
+      } catch (error) {
+        alert(error.message);
+      }
   };
   console.log(problemData);
   return (
@@ -142,26 +136,18 @@ export default function AddCode() {
           <ApproachComponent
             key={index}
             index={index}
-            cppValue={cppValue}
-            javaValue={javaValue}
-            pythonValue={pythonValue}
-            setCppValue={setCppValue}
-            setJavaValue={setJavaValue}
-            setPythonValue={setPythonValue}
             addApproach={addApproach}
             removeApproach={removeApproach}
-            approachDescription={approachDescription}
-            setApproachDescription={setApproachDescription}
-            timeComplexity={timeComplexity}
-            setTimeComplexity={setTimeComplexity}
-            spaceComplexity={spaceComplexity}
-            setSpaceComplexity={setSpaceComplexity}
+            appoaches={appoaches}
+            problemData={problemData}
           />
         );
       })}
-
       <br />
-      <Button onClick={post}> Post</Button>
+      <Button variant="contained" onClick={post}>
+        {" "}
+        Post
+      </Button>
     </div>
   );
 }

@@ -4,7 +4,6 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
 const Pre = styled.pre`
   text-align: left;
-  margin: 1em 0;
   padding: 0.7em;
   overflow: scroll;
 `;
@@ -25,7 +24,7 @@ const LineContent = styled.span`
   display: table-cell;
 `;
 const WithLineNumbers = (props) => (
-  <div style={{ width: "98%", paddingLeft: 10, }}>
+  <div style={{ width: "98%"}}>
     <Highlight
       {...defaultProps}
       theme={theme}

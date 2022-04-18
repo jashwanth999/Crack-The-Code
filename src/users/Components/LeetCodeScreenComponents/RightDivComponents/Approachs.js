@@ -23,15 +23,15 @@ export default function Approachs(props) {
             </Paper>
 
             <Tags colorList={colorList} data={data} />
-            <div style={{ margin: 15 }}>
+            <div style={{ margin: 10 }}>
               <CodeTab data={data} />
             </div>
             <Paper elevation={0} style={props.complexityPaper}>
               <h3 style={props.complexityTexts}>
-                Time Complexity : {data.complexity.timeComplexity}
+                Time Complexity : {data.complexity.timeComplexity.toUpperCase()}
               </h3>
               <h3 style={props.complexityTexts}>
-                Space Complexity : {data.complexity.spaceComplexity}
+                Space Complexity : {data.complexity.spaceComplexity.toUpperCase()}
               </h3>
             </Paper>
           </div>

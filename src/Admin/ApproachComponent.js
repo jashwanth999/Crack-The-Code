@@ -3,6 +3,7 @@ import CodeEditor from "@uiw/react-textarea-code-editor";
 import Tabs from "./Tabs";
 import { Button, Paper } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { PropaneSharp } from "@mui/icons-material";
 export default function ApproachComponent(props) {
   const [approachName, setApproachName] = useState(``);
   const [approachDescription, setApproachDescription] = useState(``);
@@ -16,7 +17,7 @@ export default function ApproachComponent(props) {
   const [tag, setTag] = useState("");
 
   const addTags = () => {
-    setTags([...tags, tag]);
+    if (tag) setTags([...tags, tag]);
   };
   const removeTags = (index) => {
     setTags((tag) => tag.filter((item, i) => i !== index));
@@ -33,7 +34,8 @@ export default function ApproachComponent(props) {
     },
     tags: tags,
   };
-
+  props.appoaches[props.index] = data;
+  console.log(props.problemData);
   return (
     <Paper
       style={{
@@ -134,17 +136,19 @@ export default function ApproachComponent(props) {
       />
       <br />
       <div style={{ width: "100%" }}>
-        <Button
-          onClick={() => {
-            props.removeApproach(props.index);
-          }}
-          variant="contained"
-          color="secondary"
-          style={{ float: "right", margin: 5 }}
-        >
-          {" "}
-          remove Approach{" "}
-        </Button>
+        {props.index !== 0 && (
+          <Button
+            onClick={() => {
+              props.removeApproach(props.index);
+            }}
+            variant="contained"
+            color="secondary"
+            style={{ float: "right", margin: 5 }}
+          >
+            {" "}
+            remove Approach{" "}
+          </Button>
+        )}
         <Button
           onClick={() => {
             props.addApproach(props.index, data);
@@ -152,8 +156,8 @@ export default function ApproachComponent(props) {
           variant="contained"
           style={{ float: "right", margin: 5 }}
         >
-          {" "}
-          Add Approach{" "}
+         
+          New Approach
         </Button>
       </div>
     </Paper>

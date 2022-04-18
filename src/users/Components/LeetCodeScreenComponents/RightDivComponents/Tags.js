@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Tags(props) {
   return (
-    <div style={{ display: "flex", flexDirection: "row", margin: 5 }}>
+    <div style={{ display: "flex", flexDirection: "row", margin: 2 }}>
       {props.data?.tags?.map((tag, index) => {
         return (
           <span

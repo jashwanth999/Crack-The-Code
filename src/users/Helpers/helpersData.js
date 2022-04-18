@@ -6,7 +6,7 @@ export const colorList = {
   "Two Pointers": "#5499C7",
   "Hash Map": "#48C9B0",
   String: "#B03A2E ",
-  "Number theory": "#34495E",
+  "Number Theory": "#34495E",
   "Linked List": "#8E44AD",
   Backtracking: "#BC58D6",
 };

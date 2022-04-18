@@ -12,10 +12,10 @@ export default function CodeTab(props) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  console.log(props.data);
+ 
 
   return (
-    <Box sx={{ width: "100%", typography: "body1" }}>
+    <Box sx={{  typography: "body1",}}>
       <TabContext value={value}>
         <Box sx={{}}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
@@ -36,9 +36,9 @@ export default function CodeTab(props) {
             />
           </TabList>
         </Box>
-        <TabPanel value="cpp">
+        <TabPanel   value="cpp">
           {props.data && (
-            <CodeView
+            <ExampleCode
               lineNum={true}
               language={value}
               code={props.data[value]}
@@ -47,16 +47,16 @@ export default function CodeTab(props) {
         </TabPanel>
         <TabPanel value="java">
           {props.data && (
-            <CodeView
+            <ExampleCode
               lineNum={true}
-              language={value}
+              language={'cpp'}
               code={props.data[value]}
             />
           )}
         </TabPanel>
         <TabPanel value="python">
           {props.data && (
-            <CodeView
+            <ExampleCode
               lineNum={true}
               language={value}
               code={props.data[value]}
