@@ -3,7 +3,6 @@ import CodeEditor from "@uiw/react-textarea-code-editor";
 import Tabs from "./Tabs";
 import { Button, Paper } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { PropaneSharp } from "@mui/icons-material";
 export default function ApproachComponent(props) {
   const [approachName, setApproachName] = useState(``);
   const [approachDescription, setApproachDescription] = useState(``);

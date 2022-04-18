@@ -6,7 +6,7 @@ export default function LeftTitleList(props) {
   const [expand, setExpand] = useState(false);
   useEffect(() => {
     if (props.index === 0) setExpand(true);
-  }, []);
+  }, [props.index]);
 
   return (
     <div>

@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import AddCode from "../../Admin/AddCode";
 import AddCS from "../../Admin/AddCsFund";
 import AddLeetcode from "../../Admin/AddLeetcode";
 import ComputerScienceFundamentals from "../Screens/ComputerScienceFundamental";
@@ -16,9 +15,8 @@ export default function RoutesComponent() {
         path="/cs-fundamentals/:subjectName/:subTopicName"
         element={<ComputerScienceFundamentals />}
       />
-      <Route path="/Admin" element={<AddLeetcode />} />
+      <Route path="/Addleetcode" element={<AddLeetcode />} />
       <Route path="/Addcs" element={<AddCS />} />
-      <Route path="/Addcode" element={<AddCode />} />
     </Routes>
   );
 }

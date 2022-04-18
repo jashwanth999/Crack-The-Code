@@ -1,10 +1,10 @@
 import { Paper, Typography } from "@mui/material";
 import React from "react";
 import { colorList } from "../../../Helpers/helpersData";
-import ExampleCode from "../../../Helpers/exampleCode";
+//import ExampleCode from "../../../Helpers/exampleCode";
 import Tags from "./Tags";
-import Editor from "../../../Helpers/Editor";
-import CodeView from "../../../Helpers/CodeView";
+// import Editor from "../../../Helpers/Editor";
+// import CodeView from "../../../Helpers/CodeView";
 import CodeTab from "../../../Helpers/CodeTab";
 export default function Approachs(props) {
   return (
