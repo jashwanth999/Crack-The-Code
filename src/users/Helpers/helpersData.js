@@ -9,7 +9,9 @@ export const colorList = {
   "Number Theory": "#34495E",
   "Linked List": "#8E44AD",
   Backtracking: "#BC58D6",
-  'Sliding Window':'#45B39D'
+  "Sliding Window": "#45B39D",
+  DP: "#81E035",
+  Matrix: "#35C7E0",
 };
 export function truncate(string, length) {
   if (string.length > length) return string.substring(0, length) + "...";
