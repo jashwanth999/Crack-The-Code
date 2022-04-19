@@ -1,10 +1,11 @@
-import { Paper, Typography } from "@mui/material";
+import { Paper } from "@mui/material";
 import React from "react";
 import { colorList } from "../../../Helpers/helpersData";
 //import ExampleCode from "../../../Helpers/exampleCode";
 import Tags from "./Tags";
-// import Editor from "../../../Helpers/Editor";
+import Editor from "../../../Helpers/Editor";
 // import CodeView from "../../../Helpers/CodeView";
+
 import CodeTab from "../../../Helpers/CodeTab";
 export default function Approachs(props) {
   return (
@@ -15,24 +16,20 @@ export default function Approachs(props) {
             <h3 style={props.headerStyle}>
               Approach {index + 1} - {data.approachName}{" "}
             </h3>
-            <Paper style={props.statementDiv} elevation={0}>
-              <Typography style={{ padding: 5, whiteSpace: "pre-wrap" }}>
-                {" "}
-                {data.approachDescription}
-              </Typography>
-            </Paper>
-
+            
+            <Editor code={data.approachDescription} language={"text"} disabled={true} />
             <Tags colorList={colorList} data={data} />
             <div style={{ margin: 10 }}>
               <CodeTab data={data} />
             </div>
             <Paper elevation={0} style={props.complexityPaper}>
-              <h3 style={props.complexityTexts}>
+              <h4 style={props.complexityTexts}>
                 Time Complexity : {data.complexity.timeComplexity.toUpperCase()}
-              </h3>
-              <h3 style={props.complexityTexts}>
-                Space Complexity : {data.complexity.spaceComplexity.toUpperCase()}
-              </h3>
+              </h4>
+              <h4 style={props.complexityTexts}>
+                Space Complexity :{" "}
+                {data.complexity.spaceComplexity.toUpperCase()}
+              </h4>
             </Paper>
           </div>
         );

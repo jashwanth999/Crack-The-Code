@@ -1,11 +1,12 @@
-import { Paper } from "@mui/material";
-import ExampleCode from "../../Helpers/exampleCode";
-import YoutubeEmbed from "../../Helpers/YoutubeEmbed";
+// import { Paper } from "@mui/material";
+// import ExampleCode from "../../Helpers/exampleCode";
+// import YoutubeEmbed from "../../Helpers/YoutubeEmbed";
 import Title from "./RightDivComponents/Title";
 import ProblemStatement from "./RightDivComponents/ProblemStatement";
 import Approachs from "./RightDivComponents/Approachs";
 import ReactLoading from "react-loading";
 import { colorList } from "../../Helpers/helpersData";
+import Editor from "../../Helpers/Editor";
 //import Editor from "../../Helpers/Editor";
 //import CodeView from "../../Helpers/CodeView";
 export default function RightDiv(props) {
@@ -37,13 +38,11 @@ export default function RightDiv(props) {
       />
 
       {props.problemData.testCases && (
-        <div style={{ textAlign: "left", margin: 10 }}>
-          <ExampleCode
-            lineNum={false}
-            code={props.problemData?.testCases}
-            language={"text"}
-          />
-        </div>
+        <Editor
+          code={props.problemData?.testCases}
+          language={"text"}
+          disabled={true}
+        />
       )}
       <br />
       <Approachs
@@ -54,12 +53,6 @@ export default function RightDiv(props) {
         complexityTexts={complexityTexts}
         headerStyle={headerStyle}
       />
-      <br />
-      <h3 style={headerStyle}>Links</h3>
-      <Paper style={youtubePaper} elevation={0}>
-        <YoutubeEmbed link={props.problemData.links} />
-      </Paper>
-
       <br />
     </div>
   );
@@ -72,7 +65,6 @@ const rootDiv = {
 };
 const difficultSpan = {
   padding: 6,
-
   borderRadius: 5,
   color: "white",
   fontWeight: "bold",
@@ -99,11 +91,11 @@ const complexityTexts = {
   paddingLeft: 10,
   margin: 3,
   color: "#04B687",
-  fontSize: 17,
+  fontSize: 14,
 };
 
 const complexityPaper = {
-  backgroundColor: "#ECF0F1",
+  backgroundColor: "#212F3C",
   margin: 10,
   display: "flex",
   textAlign: "left",

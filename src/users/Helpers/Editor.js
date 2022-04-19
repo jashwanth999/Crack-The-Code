@@ -12,6 +12,7 @@ export default function Editor(props) {
           placeholder=""
           padding={15}
           style={editorStyle}
+          disabled={props.disabled}
         />
       </div>
     </StyleRoot>
@@ -23,7 +24,7 @@ const editorStyle = {
   minWidth: 250,
   overflowX: "scroll",
   backgroundColor: "#212F3C",
+  color: "white",
   fontFamily:
     "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
-  "@media (max-width: 600px)": {},
 };
