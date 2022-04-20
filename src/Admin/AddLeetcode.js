@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CodeEditor from "@uiw/react-textarea-code-editor";
 import ApproachComponent from "./ApproachComponent";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "../Api/Firebase";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
@@ -11,6 +11,8 @@ import Select from "@mui/material/Select";
 import { Button } from "@mui/material";
 export default function AddCode() {
   // const [lang, setLang] = useState("cpp");
+
+  const [useData, setUseData] = useState();
 
   const [difficult, setDifficult] = useState(`Easy`);
 
@@ -26,7 +28,7 @@ export default function AddCode() {
   const [testCases, setTestCases] = useState(``);
 
   const addApproach = (index, data) => {
-   // appoaches[index] = data;
+    // appoaches[index] = data;
 
     setApproaches([...appoaches, {}]);
   };
@@ -45,7 +47,6 @@ export default function AddCode() {
     problemStatement: probStatement,
     testCases: testCases,
     approachList: appoaches,
-    links: "https://youtube.com/embed/dRUpbt8vHpo",
     timestamp: new Date(),
   };
   const post = () => {
@@ -59,22 +60,39 @@ export default function AddCode() {
         alert(error.message);
       }
   };
-  console.log(problemData);
+  const getData = async () => {
+    if (probName) {
+      const res = await getDoc(
+        doc(db, "leetcode-sols", `${probName.replace(/ /g, "-")}`)
+      );
+      setProbNumber(res.data().no);
+      setProbName(res.data().problemName);
+      setProbStatement(res.data().problemStatement);
+      setDifficult(res.data().difficult);
+      setTestCases(res.data().testCases);
+      console.log(res.data().approachList);
+    }
+  };
+
+  // console.log(useData);
+
   return (
     <div style={rootDiv}>
       <h3> Add data</h3>
+
       <div style={{ textAlign: "left", width: "90%" }}>
         <h4>
           Problem number <span style={{ color: "red" }}>*</span>
         </h4>
         <input
-          value={probNumber}
+          value={useData ? useData.no : probNumber}
           onChange={(e) => setProbNumber(e.target.value)}
           placeholder="Problem Number"
           type="number"
           style={{ width: "70%", height: 30, color: "black" }}
         />
         <br />
+
         <br />
         <Box sx={{ width: 120 }}>
           <FormControl fullWidth>
@@ -96,6 +114,7 @@ export default function AddCode() {
         <h4>
           Problem name <span style={{ color: "red" }}>*</span>
         </h4>
+
         <input
           value={probName}
           onChange={(e) => setProbName(e.target.value)}
@@ -103,7 +122,8 @@ export default function AddCode() {
           type="text"
           style={{ width: "70%", height: 30, color: "black" }}
         />
-
+        <Button onClick={getData}> Get</Button>
+        <br />
         <h4>
           Problem Statement <span style={{ color: "red" }}>*</span>
         </h4>

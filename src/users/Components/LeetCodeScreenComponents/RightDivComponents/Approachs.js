@@ -7,6 +7,7 @@ import Editor from "../../../Helpers/Editor";
 // import CodeView from "../../../Helpers/CodeView";
 
 import CodeTab from "../../../Helpers/CodeTab";
+import CenterImage from "../../../Helpers/CenterImage";
 export default function Approachs(props) {
   return (
     <>
@@ -16,9 +17,15 @@ export default function Approachs(props) {
             <h3 style={props.headerStyle}>
               Approach {index + 1} - {data.approachName}{" "}
             </h3>
-            
-            <Editor code={data.approachDescription} language={"text"} disabled={true} />
             <Tags colorList={colorList} data={data} />
+
+            <Editor
+              code={data.approachDescription}
+              language={"text"}
+              disabled={true}
+            />
+            {data.image && <CenterImage image={data.image} />}
+
             <div style={{ margin: 10 }}>
               <CodeTab data={data} />
             </div>

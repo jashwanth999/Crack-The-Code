@@ -1,6 +1,7 @@
 import { doc, setDoc } from "firebase/firestore";
 import React from "react";
 import { db } from "../Api/Firebase";
+import TextEditor from "../users/Helpers/TextEditor";
 const data = {
   subTopicName: "Class and Objects",
   description: `Class is blueprint or template for an Object
@@ -84,7 +85,7 @@ export default function AddCS() {
   };
   return (
     <div style={{ height: "92vh" }}>
-      <button onClick={addProblem}> AddCS</button>
+      <TextEditor />
     </div>
   );
 }

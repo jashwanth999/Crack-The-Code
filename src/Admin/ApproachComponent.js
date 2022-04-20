@@ -34,7 +34,7 @@ export default function ApproachComponent(props) {
     tags: tags,
   };
   props.appoaches[props.index] = data;
-  console.log(props.problemData);
+
   return (
     <Paper
       style={{
@@ -52,7 +52,11 @@ export default function ApproachComponent(props) {
       </h4>
       <div style={{ marginTop: 10, width: "70%" }}>
         <CodeEditor
-          value={approachName}
+          value={
+            props.useData
+              ? props.useData.approachList[props.index].approachName
+              : approachName
+          }
           onChange={(e) => setApproachName(e.target.value)}
           language={""}
           placeholder="Add Approach Name"
@@ -83,8 +87,9 @@ export default function ApproachComponent(props) {
                 alignItems: "center",
               }}
             >
-              {" "}
-              {x}{" "}
+              {props.useData
+                ? props.useData.approachList[props.index].tags[index]
+                : x}
               <CloseIcon
                 onClick={() => {
                   removeTags(index);
@@ -98,7 +103,11 @@ export default function ApproachComponent(props) {
 
       <div style={{ marginTop: 10, width: "70%" }}>
         <CodeEditor
-          value={approachDescription}
+          value={
+            props.useData
+              ? props.useData.approachList[props.index].approachDescription
+              : approachDescription
+          }
           onChange={(e) => setApproachDescription(e.target.value)}
           language={""}
           placeholder="Add Approach description"
@@ -108,9 +117,21 @@ export default function ApproachComponent(props) {
 
       <div style={{ width: "70%" }}>
         <Tabs
-          cppValue={cppValue}
-          javaValue={javaValue}
-          pythonValue={pythonValue}
+          cppValue={
+            props.useData
+              ? props.useData.approachList[props.index].cpp
+              : cppValue
+          }
+          javaValue={
+            props.useData
+              ? props.useData.approachList[props.index].java
+              : javaValue
+          }
+          pythonValue={
+            props.useData
+              ? props.useData.approachList[props.index].python
+              : pythonValue
+          }
           setCppValue={setCppValue}
           setJavaValue={setJavaValue}
           setPythonValue={setPythonValue}
@@ -118,7 +139,11 @@ export default function ApproachComponent(props) {
       </div>
       <br />
       <input
-        value={timeComplexity}
+        value={
+          props.useData
+            ? props.useData.approachList[props.index].complexity.timeComplexity
+            : timeComplexity
+        }
         onChange={(e) => setTimeComplexity(e.target.value)}
         placeholder="Time Complexity"
         type="text"
@@ -127,7 +152,11 @@ export default function ApproachComponent(props) {
       <br />
       <br />
       <input
-        value={spaceComplexity}
+        value={
+          props.useData
+            ? props.useData.approachList[props.index].complexity.spaceComplexity
+            : spaceComplexity
+        }
         onChange={(e) => setSpaceComplexity(e.target.value)}
         placeholder="Space Complexity"
         type="text"
@@ -155,7 +184,6 @@ export default function ApproachComponent(props) {
           variant="contained"
           style={{ float: "right", margin: 5 }}
         >
-         
           New Approach
         </Button>
       </div>

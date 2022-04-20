@@ -1,7 +1,8 @@
 import { Paper, Typography } from "@mui/material";
 import React from "react";
-import ExampleCode from "../../Helpers/exampleCode";
+//import ExampleCode from "../../Helpers/exampleCode";
 import ReactLoading from "react-loading";
+import Editor from "../../Helpers/Editor";
 export default function RightDiv(props) {
   if (props.loading)
     return (
@@ -18,34 +19,25 @@ export default function RightDiv(props) {
     );
   return (
     <div style={rootDiv}>
-      <h2 style={{ color: "#3498DB" }}>{props.problemdata?.subTopicName}</h2>
       {props.problemdata?.description && (
         <>
-          <h3 style={headerStyle}>Description</h3>
-          <Paper elevation={0} style={descPaper}>
-            <Typography style={{ whiteSpace: "pre-line" }}>
-              {props.problemdata?.description}
-            </Typography>
-          </Paper>
+          <h3 style={{ color: "#3498DB", margin: 10 }}>
+            {props.problemdata?.subTopicName}
+          </h3>
+          <Editor
+            code={props.problemdata?.description}
+            language={"text"}
+            disabled={true}
+          />
         </>
       )}
 
-      {props.problemdata?.image && (
-        <div >
-          <img
-            style={{ objectFit: "contain", width: 340 }}
-            alt=""
-            src={props.problemdata.image}
-          />
-        </div>
-      )}
       {props.problemdata?.exampleCodesList &&
         props.problemdata.exampleCodesList.map(
           (data, index) =>
             data.exampleCode &&
             data.output && (
               <div key={index}>
-                <h3 style={headerStyle}>{data.exampleCodeName}</h3>
                 {data.exampleCodeDescription && (
                   <Paper elevation={0} style={descPaper}>
                     <Typography style={{ whiteSpace: "pre-line" }}>
@@ -53,18 +45,21 @@ export default function RightDiv(props) {
                     </Typography>
                   </Paper>
                 )}
-
-                <ExampleCode
-                  lineNum={true}
-                  code={data.exampleCode.code}
-                  language={data.exampleCode.language}
-                />
-                <h4 style={output}>output:</h4>
-                <ExampleCode
-                  lineNum={false}
-                  code={data.output.code}
-                  language={data.output.language}
-                />
+                <div style={{}}>
+                  {" "}
+                  <Editor
+                    lineNum={true}
+                    code={data.exampleCode.code}
+                    language={data.exampleCode.language}
+                    disabled={true}
+                  />
+                  <Editor
+                    lineNum={false}
+                    code={'text'}
+                    language={data.output.language}
+                    disabled={true}
+                  />
+                </div>
               </div>
             )
         )}
@@ -85,18 +80,18 @@ const rootDiv = {
   width: "98%",
 };
 
-const headerStyle = {
-  margin: 10,
-  borderLeft: "solid #2E86C1 4px",
-  paddingTop: 0,
-  paddingLeft: 5,
-  paddingBottom: 0,
-  textAlign: "left",
-};
-const output = {
-  margin: 10,
-  paddingTop: 0,
-  paddingLeft: 5,
-  paddingBottom: 0,
-  textAlign: "left",
-};
+// const headerStyle = {
+//   margin: 10,
+//   borderLeft: "solid #2E86C1 4px",
+//   paddingTop: 0,
+//   paddingLeft: 5,
+//   paddingBottom: 0,
+//   textAlign: "left",
+// };
+// const output = {
+//   margin: 10,
+//   paddingTop: 0,
+//   paddingLeft: 5,
+//   paddingBottom: 0,
+//   textAlign: "left",
+// };
