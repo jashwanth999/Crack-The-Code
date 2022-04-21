@@ -4,7 +4,7 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import ExampleCode from "./exampleCode";
+import Code from "./Code";
 //import CodeView from "./CodeView";
 export default function CodeTab(props) {
   const [value, setValue] = React.useState("cpp");
@@ -12,33 +12,31 @@ export default function CodeTab(props) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
- 
 
   return (
-    <Box sx={{  typography: "body1",}}>
+    <Box sx={{ typography: "body1" }}>
       <TabContext value={value}>
-        
-          <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab
-              style={{ color: "#1B93B4", fontWeight: "bold" }}
-              label="CPP"
-              value="cpp"
-            />
-            <Tab
-              style={{ color: "#1B93B4", fontWeight: "bold" }}
-              label="JAVA"
-              value="java"
-            />
-            <Tab
-              style={{ color: "#1B93B4", fontWeight: "bold" }}
-              label="PYTHON"
-              value="python"
-            />
-          </TabList>
-     
-        <TabPanel   value="cpp">
+        <TabList onChange={handleChange} aria-label="lab API tabs example">
+          <Tab
+            style={{ color: "#1B93B4", fontWeight: "bold" }}
+            label="CPP"
+            value="cpp"
+          />
+          <Tab
+            style={{ color: "#1B93B4", fontWeight: "bold" }}
+            label="JAVA"
+            value="java"
+          />
+          <Tab
+            style={{ color: "#1B93B4", fontWeight: "bold" }}
+            label="PYTHON"
+            value="python"
+          />
+        </TabList>
+
+        <TabPanel value="cpp">
           {props.data && (
-            <ExampleCode
+            <Code
               lineNum={true}
               language={value}
               code={props.data[value]}
@@ -47,16 +45,16 @@ export default function CodeTab(props) {
         </TabPanel>
         <TabPanel value="java">
           {props.data && (
-            <ExampleCode
+            <Code
               lineNum={true}
-              language={'cpp'}
+              language={"cpp"}
               code={props.data[value]}
             />
           )}
         </TabPanel>
         <TabPanel value="python">
           {props.data && (
-            <ExampleCode
+            <Code
               lineNum={true}
               language={value}
               code={props.data[value]}

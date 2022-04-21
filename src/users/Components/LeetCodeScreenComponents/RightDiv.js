@@ -1,14 +1,9 @@
-// import { Paper } from "@mui/material";
-// import ExampleCode from "../../Helpers/exampleCode";
-// import YoutubeEmbed from "../../Helpers/YoutubeEmbed";
 import Title from "./RightDivComponents/Title";
 import ProblemStatement from "./RightDivComponents/ProblemStatement";
 import Approachs from "./RightDivComponents/Approachs";
 import ReactLoading from "react-loading";
 import { colorList } from "../../Helpers/helpersData";
 import Editor from "../../Helpers/Editor";
-//import Editor from "../../Helpers/Editor";
-//import CodeView from "../../Helpers/CodeView";
 export default function RightDiv(props) {
   if (props.loading)
     return (

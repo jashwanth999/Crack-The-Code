@@ -14,6 +14,7 @@ export default function Editor(props) {
           style={editorStyle}
           disabled={props.disabled}
           
+          
         />
       </div>
     </StyleRoot>
@@ -23,8 +24,9 @@ const editorStyle = {
   fontSize: "0.9rem",
   borderRadius: 5,
   backgroundColor: "#212F3C",
-  color: "white",
+  color: "#D5DBDB",
   overflow: "auto",
+  maxHeight:500,
   fontFamily:
     "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
 };

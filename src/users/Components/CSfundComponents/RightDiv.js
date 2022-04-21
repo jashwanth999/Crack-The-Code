@@ -3,6 +3,7 @@ import React from "react";
 //import ExampleCode from "../../Helpers/exampleCode";
 import ReactLoading from "react-loading";
 import Editor from "../../Helpers/Editor";
+import Code from "../../Helpers/Code";
 export default function RightDiv(props) {
   if (props.loading)
     return (
@@ -47,7 +48,7 @@ export default function RightDiv(props) {
                 )}
                 <div style={{}}>
                   {" "}
-                  <Editor
+                  <Code
                     lineNum={true}
                     code={data.exampleCode.code}
                     language={data.exampleCode.language}
@@ -55,7 +56,7 @@ export default function RightDiv(props) {
                   />
                   <Editor
                     lineNum={false}
-                    code={'text'}
+                    code={"text"}
                     language={data.output.language}
                     disabled={true}
                   />
