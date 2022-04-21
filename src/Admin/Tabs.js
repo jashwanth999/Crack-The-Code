@@ -6,7 +6,6 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import CodeEditor from "@uiw/react-textarea-code-editor";
 export default function Tabs(props) {
-
   const [value, setValue] = React.useState("cpp");
 
   const handleChange = (event, newValue) => {
@@ -24,15 +23,13 @@ export default function Tabs(props) {
           </TabList>
         </Box>
         <TabPanel value="cpp">
-      
-            <CodeEditor
-              value={props.cppValue}
-              language={"cpp"}
-              placeholder={`paste cpp code`}
-              style={editorStyle}
-              onChange={(e) => props.setCppValue(e.target.value)}
-            />
-      
+          <CodeEditor
+            value={props.cppValue}
+            language={"cpp"}
+            placeholder={`paste cpp code`}
+            style={editorStyle}
+            onChange={(e) => props.setCppValue(e.target.value)}
+          />
         </TabPanel>
         <TabPanel value="java">
           <CodeEditor

@@ -36,39 +36,20 @@ export default function CodeTab(props) {
 
         <TabPanel value="cpp">
           {props.data && (
-            <Code
-              lineNum={true}
-              language={value}
-              code={props.data[value]}
-            />
+            <Code lineNum={true} language={value} code={props.data[value]} />
           )}
         </TabPanel>
         <TabPanel value="java">
           {props.data && (
-            <Code
-              lineNum={true}
-              language={"cpp"}
-              code={props.data[value]}
-            />
+            <Code lineNum={true} language={"cpp"} code={props.data[value]} />
           )}
         </TabPanel>
         <TabPanel value="python">
           {props.data && (
-            <Code
-              lineNum={true}
-              language={value}
-              code={props.data[value]}
-            />
+            <Code lineNum={true} language={value} code={props.data[value]} />
           )}
         </TabPanel>
       </TabContext>
     </Box>
   );
 }
-const editorStyle = {
-  fontSize: 14,
-  borderRadius: 5,
-  backgroundColor: "black",
-  fontFamily:
-    "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
-};

@@ -1,91 +1,102 @@
 import { doc, setDoc } from "firebase/firestore";
+import { StyleRoot } from "radium";
 import React from "react";
 import { db } from "../Api/Firebase";
-import TextEditor from "../users/Helpers/TextEditor";
-const data = {
-  subTopicName: "Class and Objects",
-  description: `Class is blueprint or template for an Object
-  Class Animal has features
-  1.breed
-  2.Color
-  3.food
-  
-  Class Vehicle has features
-  1.speed
-  2.Color
-  
-  To call a class objects are used .For class Animal Cat, Dog are objects .For class Vehicle Car,Bike are objects
-    `,
-  exampleCodesList: [
-    {
-      exampleCodeName: "Calling class using objects",
-      exampleCodeDescription: ``,
-      exampleCode: {
-        code: `
-#include<bits/stdc++.h>
-using namespace std;
+import { tools } from "../users/Helpers/EdtiorTools";
+// import TextEditor from "../users/Helpers/TextEditor";
+// import MarkDown from "../users/Helpers/MarkDownEditor";
 
-class Animal {
-public:
-    string animalName;
-    Animal(string a) {
-    animalName=a; 
-    }   
-    void eats(string foodName) {
-        cout << animalName<<" eats " << foodName;
+const data = [
+  {
+    name: "title",
+    value: "Process",
+  },
+  {
+    name: "description",
+    value:
+      "A process is basically a program in execution. The execution of a process must progress in a sequential fashion.",
+  },
+  {
+    name: "image",
+    value:
+      "https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2015/06/process.png",
+  },
+  {
+    name: "header",
+    value: "States of Process",
+  },
+  {
+    name: "description",
+    value: `1. New: Newly Created Process (or) being-created process.
 
-    }
+2. Ready: After creation process moves to Ready state, i.e. the process is ready for execution.
 
-};
-int  main() {
+3. Run: Currently running process in CPU (only one process at a time can be under execution in a single processor.
 
-    // declaring objects and passing parameters as animal Name
-    Animal dog("dog");
-    Animal cat("cat");
+4. Wait (or Block): When a process requests I/O access.
 
-    // Calling function
+5. Complete (or Terminated): The process completed its execution.
 
-    dog.eats("cat");
-    cat.eats("mouse");
+6. Suspended Ready: When the ready queue becomes full, some processes are moved to suspended ready state
 
-  return 0;
-   }
-        
-  `,
-        language: "cpp",
-      },
-      output: {
-        code: `
-dog eats cat
-cat eats mouse
-      `,
-        language: "jsx",
-      },
-    },
-  ],
-  image: "https://www.guru99.com/images/java/052016_0704_ObjectsandC6.jpg",
-  timestamp: new Date(),
-};
+7. Suspended Block: When waiting queue becomes full.`,
+  },
+  {
+    name: "image",
+    value:
+      "https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2015/06/process-states1.png",
+  },
+];
 export default function AddCS() {
   const addProblem = () => {
     try {
       setDoc(
-        doc(
-          db,
-          "CS-fundamentals",
-          "OOPS-Concept",
-          "subtopics",
-          "Class-and-Objects"
-        ),
-        data
+        doc(db, "CS-fundamentals", "Operating-Systems", "subtopics", "Process"),
+        {
+          data,
+        }
       );
     } catch (error) {
       alert(error.message);
     }
   };
+ 
   return (
-    <div style={{ height: "92vh" }}>
-      <TextEditor />
-    </div>
+    <StyleRoot>
+      <div style={{ display: "flex", flex: 1, flexDirection: "row" }}>
+        <div style={leftDiv}></div>
+        <div style={rightDiv}>
+          <button onClick={addProblem}> add code</button>
+          {data.map((x, index) => {
+            return (
+              <div style={{ textAlign: "left" }} key={index}>
+                {tools[x.name](x.value)}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </StyleRoot>
   );
 }
+const leftDiv = {
+  display: "flex",
+  flex: 0.25,
+  backgroundColor: "#212F3C",
+  height: "90vh",
+  justifyContent: "center",
+  overflowY: "scroll",
+  "@media (max-width: 600px)": {
+    display: "none",
+  },
+};
+const rightDiv = {
+  display: "flex",
+  flex: 1,
+  backgroundColor: "white",
+  height: "90vh",
+  overflow: "auto",
+  flexDirection: "column",
+  margin: 10,
+  "@media (max-width: 600px)": {},
+};

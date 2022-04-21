@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import CodeEditor from "@uiw/react-textarea-code-editor";
 import ApproachComponent from "./ApproachComponent";
 import { doc, setDoc, getDoc } from "firebase/firestore";
@@ -10,7 +10,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Button } from "@mui/material";
 export default function AddCode() {
-  // const [lang, setLang] = useState("cpp");
+
 
   const [useData, setUseData] = useState();
 
@@ -43,17 +43,35 @@ export default function AddCode() {
   const problemData = {
     problemName: probName,
     no: Number(probNumber),
-    difficult: difficult,
-    problemStatement: probStatement,
-    testCases: testCases,
-    approachList: appoaches,
     timestamp: new Date(),
+    data: [
+      {
+        name: "title",
+        value: probName,
+      },
+      {
+        name: "difficult",
+        value: difficult,
+      },
+      {
+        name: "description",
+        value: probStatement,
+      },
+      {
+        name: "description",
+        value: testCases,
+      },
+      {
+        name: "approaches",
+        value: appoaches,
+      },
+    ],
   };
   const post = () => {
     if (!probName || !probNumber || probStatement)
       try {
         setDoc(
-          doc(db, "leetcode-sols", probName.replace(/ /g, "-")),
+          doc(db, "leetcode-solutions", probName.replace(/ /g, "-")),
           problemData
         );
       } catch (error) {
@@ -74,7 +92,7 @@ export default function AddCode() {
     }
   };
 
-  // console.log(useData);
+
 
   return (
     <div style={rootDiv}>

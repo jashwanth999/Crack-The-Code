@@ -1,17 +1,17 @@
 import { Paper } from "@mui/material";
 import React from "react";
-import { colorList } from "../../../Helpers/helpersData";
+import { colorList } from "../../Helpers/helpersData";
 
 import Tags from "./Tags";
-import Editor from "../../../Helpers/Editor";
+import Editor from "../../Helpers/Editor";
 
 
-import CodeTab from "../../../Helpers/CodeTab";
-import CenterImage from "../../../Helpers/CenterImage";
+import CodeTab from "../../Helpers/CodeTab";
+import CenterImage from "../../Helpers/CenterImage";
 export default function Approachs(props) {
   return (
     <>
-      {props.problemData.approachList?.map((data, index) => {
+      {props.approaches?.map((data, index) => {
         return (
           <div style={{ textAlign: "left" }} key={index}>
             <h3 style={props.headerStyle}>

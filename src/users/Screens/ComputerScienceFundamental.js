@@ -4,9 +4,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import LeftDrawer from "../Helpers/LeftDrawer";
 import LeftDiv from "../Components/CSfundComponents/LeftDiv";
 import { truncate } from "../Helpers/helpersData";
-import RightDiv from "../Components/CSfundComponents/RightDiv";
+import RightDiv from "../Components/RightDiv";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../Api/Firebase";
+import { tools } from "../Helpers/EdtiorTools";
 export default function ComputerScienceFundamentals() {
   const navigate = useNavigate();
   const { subjectName, subTopicName } = useParams();
@@ -29,6 +30,7 @@ export default function ComputerScienceFundamentals() {
     }
   }, [subTopicName, subjectName]);
 
+
   return (
     <StyleRoot>
       <div className="App" style={rootDiv}>
@@ -40,7 +42,11 @@ export default function ComputerScienceFundamentals() {
           />
         </div>
         <div className="rightDiv" style={rightDiv}>
-          <RightDiv problemdata={problemData} loading={loading} />
+          <RightDiv
+            problemData={problemData?.data}
+            loading={loading}
+            tools={tools}
+          />
         </div>
       </div>
 

@@ -2,7 +2,6 @@ import { StyleRoot } from "radium";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import LeftDiv from "../Components/LeetCodeScreenComponents/LeftDiv";
-//import RightDiv from "../Helpers/RightDiv";
 import "../../App.css";
 import {
   collection,
@@ -15,8 +14,11 @@ import { db } from "../../Api/Firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { drawerListAction } from "../../Api/actions";
 import LeftDrawer from "../Helpers/LeftDrawer";
-import RightDiv from "../Components/LeetCodeScreenComponents/RightDiv";
+
 import { truncate } from "../Helpers/helpersData";
+import { leetcodeTools } from "../Helpers/EdtiorTools";
+import RightDiv from "../Components/RightDiv";
+//import RightDiv from "../Components/CSfundComponents/RightDiv";
 export default function SolutionScreen() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,7 +31,7 @@ export default function SolutionScreen() {
   useEffect(() => {
     setLoading(true);
     if (id) {
-      const unsub = onSnapshot(doc(db, "leetcode-sols", id), (doc) => {
+      const unsub = onSnapshot(doc(db, "leetcode-solutions", id), (doc) => {
         setProblemData(doc.data());
         setLoading(false);
       });
@@ -38,7 +40,7 @@ export default function SolutionScreen() {
   }, [id]);
 
   useEffect(() => {
-    const ref = query(collection(db, "leetcode-sols"), orderBy("no"));
+    const ref = query(collection(db, "leetcode-solutions"), orderBy("no"));
     const unsub = onSnapshot(ref, (snapshot) => {
       dispatch(
         drawerListAction(snapshot.docs.map((doc) => doc.data().problemName))
@@ -47,7 +49,7 @@ export default function SolutionScreen() {
     return unsub;
   }, [dispatch]);
 
-  console.log(problemData);
+  // problemData={problemData?.data}
   return (
     <StyleRoot>
       <div className="App" style={rootDiv}>
@@ -63,7 +65,8 @@ export default function SolutionScreen() {
           <RightDiv
             loading={loading}
             text={transformedText}
-            problemData={problemData}
+            problemData={problemData?.data}
+            tools={leetcodeTools}
           />
         </div>
       </div>
