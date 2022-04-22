@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import AddCS from "../../Admin/AddCsFund";
 import AddLeetcode from "../../Admin/AddLeetcode";
+import Compiler from "../../Compiler/Compiler";
 import ComputerScienceFundamentals from "../Screens/ComputerScienceFundamental";
 import Home from "../Screens/Home";
 import LeetCodeScreen from "../Screens/LeetCodeScreen";
@@ -17,6 +18,7 @@ export default function RoutesComponent() {
       />
       <Route path="/Addleetcode" element={<AddLeetcode />} />
       <Route path="/Addcs" element={<AddCS />} />
+      <Route path="/Compiler" element={<Compiler />} />
     </Routes>
   );
 }

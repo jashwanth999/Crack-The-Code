@@ -13,8 +13,7 @@ export default function Editor(props) {
           padding={15}
           style={editorStyle}
           disabled={props.disabled}
-          
-          
+     
         />
       </div>
     </StyleRoot>
@@ -26,7 +25,8 @@ const editorStyle = {
   backgroundColor: "#212F3C",
   color: "#D5DBDB",
   overflow: "auto",
-  maxHeight:500,
+   lineHeight:1.5,
+  maxHeight: 500,
   fontFamily:
     "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
 };

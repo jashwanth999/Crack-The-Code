@@ -1,6 +1,8 @@
 import Approachs from "../Components/RightDivComponents/Approachs";
 import CenterImage from "./CenterImage";
+import CodeTab from "./CodeTab";
 import Editor from "./Editor";
+import Code from "../Helpers/Code";
 import { colorList } from "./helpersData";
 export const tools = {
   title: (value) => (
@@ -11,6 +13,8 @@ export const tools = {
     <Editor code={value} language={"text"} disabled={true} />
   ),
   image: (image) => <CenterImage image={image} />,
+  code: (value) => <CodeTab data={value} />,
+  onlycpp: (value) => <Code lineNum={true} language={"cpp"} code={value} />,
 };
 
 export const leetcodeTools = {

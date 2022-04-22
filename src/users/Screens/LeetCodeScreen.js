@@ -50,6 +50,11 @@ export default function SolutionScreen() {
   }, [dispatch]);
 
   // problemData={problemData?.data}
+
+  React.useEffect(() => {
+    console.log("leetcode");
+  }, []);
+
   return (
     <StyleRoot>
       <div className="App" style={rootDiv}>

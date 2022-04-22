@@ -15,7 +15,16 @@ const list = [
   },
   {
     name: "Operating Systems",
-    subList: ["Process", "Threads", "Context Switching", "Thrashing"],
+    subList: [
+      "Introduction",
+      "Process",
+      "States of Process",
+      "Thread",
+      "Process vs Thread",
+      "Context Switching",
+      "Paging",
+      "Thrashing",
+    ],
   },
   {
     name: "DBMS",

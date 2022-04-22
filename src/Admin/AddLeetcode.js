@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import CodeEditor from "@uiw/react-textarea-code-editor";
 import ApproachComponent from "./ApproachComponent";
 import { doc, setDoc, getDoc } from "firebase/firestore";
@@ -10,8 +10,6 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { Button } from "@mui/material";
 export default function AddCode() {
-
-
   const [useData, setUseData] = useState();
 
   const [difficult, setDifficult] = useState(`Easy`);
@@ -91,9 +89,6 @@ export default function AddCode() {
       console.log(res.data().approachList);
     }
   };
-
-
-
   return (
     <div style={rootDiv}>
       <h3> Add data</h3>

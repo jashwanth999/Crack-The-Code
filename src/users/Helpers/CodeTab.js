@@ -41,7 +41,7 @@ export default function CodeTab(props) {
         </TabPanel>
         <TabPanel value="java">
           {props.data && (
-            <Code lineNum={true} language={"cpp"} code={props.data[value]} />
+            <Code lineNum={true} language={value} code={props.data[value]} />
           )}
         </TabPanel>
         <TabPanel value="python">

@@ -9,49 +9,77 @@ import { tools } from "../users/Helpers/EdtiorTools";
 const data = [
   {
     name: "title",
-    value: "Process",
+    value: "Encapsulation",
   },
+
   {
     name: "description",
-    value:
-      "A process is basically a program in execution. The execution of a process must progress in a sequential fashion.",
+    value: `Encapsulation is defined as wrapping up of data and information under a single unit. 
+
+In Object Oriented Programming, Encapsulation is defined as binding together the data and the functions that manipulates them.`,
   },
   {
-    name: "image",
-    value:
-      "https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2015/06/process.png",
+    name: "onlycpp",
+    value: `#include <bits/stdc++.h>
+using namespace std;
+  
+class Encapsulation
+{
+    private:
+        // data hidden from outside world
+        int x;
+          
+    public:
+        // function to set value of 
+        // variable x
+        void set(int a)
+        {
+            x =a;
+        }  
+        // function to return value of
+        // variable x
+        int get()
+        {
+            return x;
+        }
+  };
+      
+// main function
+int main()
+{
+  Encapsulation obj;
+  
+  obj.set(5);
+  
+  cout<<obj.get();
+  return 0;
+}`,
   },
   {
     name: "header",
-    value: "States of Process",
+    value: `output:`,
   },
   {
     name: "description",
-    value: `1. New: Newly Created Process (or) being-created process.
-
-2. Ready: After creation process moves to Ready state, i.e. the process is ready for execution.
-
-3. Run: Currently running process in CPU (only one process at a time can be under execution in a single processor.
-
-4. Wait (or Block): When a process requests I/O access.
-
-5. Complete (or Terminated): The process completed its execution.
-
-6. Suspended Ready: When the ready queue becomes full, some processes are moved to suspended ready state
-
-7. Suspended Block: When waiting queue becomes full.`,
+    value: `5`,
   },
   {
-    name: "image",
-    value:
-      "https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2015/06/process-states1.png",
+    name: "description",
+    value: `In the above program the variable x is made private. This variable can be accessed and manipulated only using the functions get() and set() which are present inside the class. Thus we can say that here, the variable x and the functions get() and set() are binded together which is nothing but encapsulation.`,
   },
 ];
+
 export default function AddCS() {
   const addProblem = () => {
     try {
       setDoc(
-        doc(db, "CS-fundamentals", "Operating-Systems", "subtopics", "Process"),
+        doc(
+          db,
+          "CS-fundamentals",
+          "OOPS-Concept",
+          "subtopics",
+          "Encapsulation"
+        ),
         {
           data,
         }
@@ -60,7 +88,7 @@ export default function AddCS() {
       alert(error.message);
     }
   };
- 
+
   return (
     <StyleRoot>
       <div style={{ display: "flex", flex: 1, flexDirection: "row" }}>

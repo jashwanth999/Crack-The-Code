@@ -13,6 +13,10 @@ export default function Home() {
   React.useEffect(() => {
     dispatch(drawerListAction([]));
   }, [dispatch]);
+  React.useEffect(() => {
+    console.log("home");
+  }, []);
+
   return (
     <StyleRoot>
       <div style={rootDiv}>

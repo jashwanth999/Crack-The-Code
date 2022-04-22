@@ -29,7 +29,9 @@ export default function ComputerScienceFundamentals() {
       return unsub;
     }
   }, [subTopicName, subjectName]);
-
+ /* useEffect(() => {
+    console.log("cs");
+  }, []);*/
 
   return (
     <StyleRoot>
