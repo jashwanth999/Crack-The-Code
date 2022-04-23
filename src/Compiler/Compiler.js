@@ -1,33 +1,10 @@
 import React, { useState } from "react";
 import CodeEditor from "@uiw/react-textarea-code-editor";
-import AceEditor from "react-ace";
 import { Button } from "@mui/material";
-import "ace-builds/src-noconflict/ext-language_tools";
-import "ace-builds/src-noconflict/mode-python";
-import "ace-builds/src-noconflict/mode-java";
-import "ace-builds/src-noconflict/mode-c_cpp";
-import "ace-builds/src-noconflict/theme-monokai";
 import { StyleRoot } from "radium";
+import CompilerEditor from "./CompilerEditor";
 import axios from "axios";
 //import { defaultCode } from "../users/Helpers/helpersData";
-
-const Editor = (props) => {
-  return (
-    <AceEditor
-      mode={props.lang === "cpp" ? "c_cpp" : props.lang}
-      theme="monokai"
-      onChange={props.onChange}
-      name="Compiler"
-      value={props.value[props.lang]}
-      editorProps={{ $blockScrolling: true }}
-      height="380px"
-      fontSize={14}
-      showPrintMargin={false}
-      style={{ borderRadius: 4, margin: 10, minWidth: 300 }}
-      width="100%"
-    />
-  );
-};
 
 export default function Compiler() {
   const [lang, setLang] = useState("cpp");
@@ -35,12 +12,11 @@ export default function Compiler() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
-  
+
   function onChange(newValue) {
     setValue(newValue);
   }
-
-
+  console.log(lang);
   let data = {
     code: value,
     language: lang === "python" ? "py" : lang,
@@ -67,10 +43,6 @@ export default function Compiler() {
   return (
     <StyleRoot>
       <div style={{ zIndex: -1 }}>
-        <h2 style={{ color: "#3498DB", textAlign: "center", margin: 3 }}>
-          Compiler
-        </h2>
-
         <div style={{ margin: 10, display: "flex", height: 40 }}>
           <select
             name="lang"
@@ -99,7 +71,7 @@ export default function Compiler() {
         </div>
         <div style={rootDiv}>
           <div style={leftDiv}>
-            <Editor value={value} lang={lang} onChange={onChange} />
+            <CompilerEditor value={value} lang={lang} onChange={onChange} />
           </div>
           <div style={rightDiv}>
             <CodeEditor

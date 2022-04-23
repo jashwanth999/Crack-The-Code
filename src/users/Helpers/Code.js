@@ -8,7 +8,6 @@ export default function Code(props) {
     <div style={{ textAlign: "left", margin: 10 }}>
       <CodeMirror
         value={props.code}
-       
         options={{
           theme: "monokai",
           keyMap: "sublime",

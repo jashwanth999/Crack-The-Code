@@ -26,7 +26,7 @@ const editorStyle = {
   color: "#D5DBDB",
   overflow: "auto",
    lineHeight:1.5,
-  maxHeight: 500,
+ 
   fontFamily:
     "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
 };

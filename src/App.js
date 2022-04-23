@@ -7,10 +7,9 @@ function App() {
   return (
     <div className="App">
       <CTCNavBar />
-      <br />
-      <br />
-      <br />
-      <RoutesComponent />
+      <div style={{ marginTop: 58 }}>
+        <RoutesComponent />
+      </div>
     </div>
   );
 }
