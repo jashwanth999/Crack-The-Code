@@ -11,76 +11,77 @@ import {
   query,
 } from "firebase/firestore";
 import { db } from "../../Api/Firebase";
-import { useDispatch, useSelector } from "react-redux";
-import { drawerListAction } from "../../Api/actions";
+import { useDispatch, } from "react-redux";
 import LeftDrawer from "../Helpers/LeftDrawer";
-
 import { truncate } from "../Helpers/helpersData";
-import { leetcodeTools } from "../Helpers/EdtiorTools";
+import { tools } from "../Helpers/EdtiorTools";
 import RightDiv from "../Components/RightDiv";
-//import RightDiv from "../Components/CSfundComponents/RightDiv";
-export default function SolutionScreen() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const problemsList = useSelector((state) => state.list.list);
-  const [problemData, setProblemData] = useState("");
+export default function CSsolutions() {
+  const { subjectName, subTopicName } = useParams();
+
+  const navigate = useNavigate();
+  //const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const { id } = useParams();
-  const text = id.replace(/-/g, " ");
-  const transformedText = `${text[0]}. ${text.substring(2).replace(/-/g, " ")}`;
+
+  const [problemName, setProblemName] = useState([]);
+  const [problemData, setProblemData] = useState(null);
   useEffect(() => {
     setLoading(true);
-    if (id) {
-      const unsub = onSnapshot(doc(db, "leetcode-solutions", id), (doc) => {
-        setProblemData(doc.data());
-        setLoading(false);
-      });
+    if (subTopicName) {
+      const unsub = onSnapshot(
+        doc(db, "CS-fundamentals", subjectName, "subtopics", subTopicName),
+        (doc) => {
+          setProblemData(doc.data());
+          setLoading(false);
+        }
+      );
       return unsub;
     }
-  }, [id]);
+  }, [subTopicName, subjectName]);
 
   useEffect(() => {
-    const ref = query(collection(db, "leetcode-solutions"), orderBy("no"));
+    const ref = query(
+      collection(db, "CS-fundamentals", subjectName, "subtopics"),
+      orderBy("timestamp", "asc")
+    );
     const unsub = onSnapshot(ref, (snapshot) => {
-      dispatch(
-        drawerListAction(snapshot.docs.map((doc) => doc.data().problemName))
-      );
+      setProblemName(snapshot.docs.map((doc) => doc.id));
     });
     return unsub;
-  }, [dispatch]);
-  const url = `leetcode-solutions`;
+  }, [subjectName]);
+  const url = `cs-fundamentals/${subjectName}`;
 
   return (
     <StyleRoot>
       <div className="App" style={rootDiv}>
         <div className="leftDiv" style={leftDiv}>
           <LeftDiv
-            list={problemsList}
+            list={problemName}
             navigate={navigate}
             truncate={truncate}
-            title={"Leetcode Problems"}
-            first={"leetcode-solutions"}
-            text={text}
+            title={subjectName.replace(/-/g, " ")}
             url={url}
+            text={subTopicName.replace(/-/g, " ")}
           />
         </div>
         <div className="rightDiv" style={rightDiv}>
           <RightDiv
             loading={loading}
-            text={transformedText}
             problemData={problemData?.data}
-            tools={leetcodeTools}
+            tools={tools}
           />
         </div>
       </div>
       <LeftDrawer
         component={
           <LeftDiv
-            list={problemsList}
+            list={problemName}
             navigate={navigate}
             truncate={truncate}
-            title={"Leetcode Problems"}
+            title={subjectName.replace(/-/g, " ")}
+            url={url}
+            text={subTopicName.replace(/-/g, " ")}
           />
         }
       />

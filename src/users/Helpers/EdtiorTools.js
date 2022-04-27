@@ -4,13 +4,17 @@ import CodeTab from "./CodeTab";
 import Editor from "./Editor";
 import Code from "../Helpers/Code";
 import { colorList } from "./helpersData";
+import parser from "html-react-parser";
+import { Paper} from "@mui/material";
 export const tools = {
   title: (value) => (
     <h2 style={{ color: "#3498DB", textAlign: "center" }}>{value}</h2>
   ),
   header: (value) => <h3 style={{ margin: 10 }}>{value}</h3>,
   description: (value) => (
-    <Editor code={value} language={"text"} disabled={true} />
+    <Paper style={editorStyle}>
+      <p style={textStyle}>{parser(value)}</p>
+    </Paper>
   ),
   image: (image) => <CenterImage image={image} />,
   code: (value) => <CodeTab data={value} />,
@@ -44,6 +48,35 @@ export const leetcodeTools = {
       complexityTexts={complexityTexts}
       headerStyle={headerStyle}
     />
+  ),
+};
+
+const textStyle = {
+  whiteSpace: "pre-wrap",
+  fontFamily:
+    "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
+  lineHeight: 1.4,
+  fontSize: 15,
+};
+const editorStyle = {
+  padding: 10,
+
+  borderRadius: 5,
+  backgroundColor: "#212F3C",
+  color: "#D5DBDB",
+  overflow: "auto",
+  lineHeight: 0,
+  fontFamily:
+    "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
+  margin: 10,
+};
+
+export const homeTools = {
+  title: (value) => (
+    <h2 style={{ color: "#3498DB", textAlign: "center" }}>{value}</h2>
+  ),
+  description: (value) => (
+    <Editor code={value} language={"text"} disabled={true} />
   ),
 };
 

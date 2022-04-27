@@ -1,6 +1,7 @@
 import CodeEditor from "@uiw/react-textarea-code-editor";
 import { StyleRoot } from "radium";
-import React from "react";
+
+
 export default function Editor(props) {
   // onChange={(evn) => setCode(evn.target.value)}
   return (

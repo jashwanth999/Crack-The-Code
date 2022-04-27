@@ -1,54 +1,76 @@
+import React, { useState } from "react";
 import { StyleRoot } from "radium";
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LeftDrawer from "../Helpers/LeftDrawer";
-import LeftDiv from "../Components/CSfundComponents/LeftDiv";
 import { truncate } from "../Helpers/helpersData";
 import RightDiv from "../Components/RightDiv";
-import { doc, onSnapshot } from "firebase/firestore";
-import { db } from "../../Api/Firebase";
-import { tools } from "../Helpers/EdtiorTools";
+import { homeTools,} from "../Helpers/EdtiorTools";
+import LeftDiv from "../Components/LeetCodeScreenComponents/LeftDiv";
+import {Typography } from "@mui/material";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 export default function ComputerScienceFundamentals() {
   const navigate = useNavigate();
-  const { subjectName, subTopicName } = useParams();
-  const [loading, setLoading] = useState(false);
-  const [problemData, setProblemData] = useState(null);
 
-  //const text = id.replace(/ /g, " ");
-  //const transformedText = `${text[0]}. ${text.substring(2).replace(/-/g, " ")}`;
-  useEffect(() => {
-    setLoading(true);
-    if (subTopicName) {
-      const unsub = onSnapshot(
-        doc(db, "CS-fundamentals", subjectName, "subtopics", subTopicName),
-        (doc) => {
-          setProblemData(doc.data());
-          setLoading(false);
-        }
-      );
-      return unsub;
-    }
-  }, [subTopicName, subjectName]);
- /* useEffect(() => {
-    console.log("cs");
-  }, []);*/
+  const [loading, setLoading] = useState(false);
+
+  const data = [
+    {
+      name: "title",
+      value: "Computer Science fundamentals",
+    },
+    {
+      name: "description",
+      value:
+        "Computer science is the study of computers and computing as well as their theoretical and practical applications. Computer science applies the principles of mathematics, engineering, and logic to a plethora of functions, including algorithm formulation, software and hardware development, and artificial intelligence.",
+    },
+  ];
+
+  const subjects = [
+    {
+      subjectName: "OOPS Concept",
+      subTopic: "Class-and-Objects",
+    },
+    {
+      subjectName: "Operating Systems",
+      subTopic: "Introduction",
+    },
+    {
+      subjectName: "DBMS",
+      subTopic: "Class-and-Objects",
+    },
+    {
+      subjectName: "Computer Network",
+      subTopic: "Class-and-Objects",
+    },
+  ];
 
   return (
     <StyleRoot>
       <div className="App" style={rootDiv}>
         <div className="leftDiv" style={leftDiv}>
-          <LeftDiv
-            title={"CS Fundamentals"}
-            truncate={truncate}
-            navigate={navigate}
-          />
+          <LeftDiv navigate={navigate} title={"Crack the Company"} list={[]} />
         </div>
         <div className="rightDiv" style={rightDiv}>
-          <RightDiv
-            problemData={problemData?.data}
-            loading={loading}
-            tools={tools}
-          />
+          <RightDiv problemData={data} loading={loading} tools={homeTools} />
+          <br />
+          <div style={{ textAlign: "left", margin: 10 }}>
+            {subjects.map((val, index) => (
+              <Typography
+                onClick={() => {
+                  navigate(
+                    `${val.subjectName.replace(/ /g, "-")}/${
+                      val.subTopic
+                    }`
+                  );
+                }}
+                key={index}
+                style={subjectText}
+              >
+                <FiberManualRecordIcon style={{ fontSize: 12, padding: 2 }} />
+                {val.subjectName}
+              </Typography>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -87,5 +109,16 @@ const rightDiv = {
   backgroundColor: "white",
   height: "90vh",
   overflow: "auto",
+  flexDirection: "column",
   "@media (max-width: 600px)": {},
+};
+
+const subjectText = {
+  fontWeight: "bold",
+  fontSize: 15,
+  color: "#58D68D",
+  padding: 5,
+  alignItems: "center",
+  display: "flex",
+  cursor: "pointer",
 };

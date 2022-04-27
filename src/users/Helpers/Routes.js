@@ -4,9 +4,10 @@ import AddCS from "../../Admin/AddCsFund";
 import AddLeetcode from "../../Admin/AddLeetcode";
 import Compiler from "../../Compiler/Compiler";
 import ComputerScienceFundamentals from "../Screens/ComputerScienceFundamental";
+import CSsolutions from "../Screens/CSsoultions";
 import Home from "../Screens/Home";
 import LeetCodeScreen from "../Screens/LeetCodeScreen";
-import CTCNavBar from "./CTCNavBar";
+///:subjectName/:subTopicName
 export default function RoutesComponent() {
   return (
     <>
@@ -15,8 +16,13 @@ export default function RoutesComponent() {
         <Route path="/leetcode-solutions/:id" element={<LeetCodeScreen />} />
         <Route
           exact={true}
-          path="/cs-fundamentals/:subjectName/:subTopicName"
+          path="/cs-fundamentals"
           element={<ComputerScienceFundamentals />}
+        />
+        <Route
+          exact={true}
+          path="/cs-fundamentals/:subjectName/:subTopicName"
+          element={<CSsolutions/>}
         />
         <Route path="/Addleetcode" element={<AddLeetcode />} />
         <Route path="/Addcs" element={<AddCS />} />

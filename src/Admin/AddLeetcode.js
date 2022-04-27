@@ -36,6 +36,7 @@ export default function AddCode() {
       return alert("atleast one approach should be there");
     }
     setApproaches((approaches) => approaches.filter((item, i) => i !== index));
+    setUseData();
   };
 
   const problemData = {

@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 import { StyleRoot } from "radium";
 import CompilerEditor from "./CompilerEditor";
 import axios from "axios";
+//import Header from "./Header";
 //import { defaultCode } from "../users/Helpers/helpersData";
 
 export default function Compiler() {
@@ -42,7 +43,9 @@ export default function Compiler() {
 
   return (
     <StyleRoot>
-      <div style={{ zIndex: -1 }}>
+      <br />
+
+      <div style={{}}>
         <div style={{ margin: 10, display: "flex", height: 40 }}>
           <select
             name="lang"

@@ -3,70 +3,36 @@ import { StyleRoot } from "radium";
 import React from "react";
 import { db } from "../Api/Firebase";
 import { tools } from "../users/Helpers/EdtiorTools";
-// import TextEditor from "../users/Helpers/TextEditor";
-// import MarkDown from "../users/Helpers/MarkDownEditor";
 
+//<b style="fontSize:16px;">1.Long Term Scheduler (Job Scheduler) </b>
 const data = [
   {
     name: "title",
-    value: "Encapsulation",
+    value: "Critical Section Problem",
   },
 
   {
     name: "description",
-    value: `Encapsulation is defined as wrapping up of data and information under a single unit. 
-
-In Object Oriented Programming, Encapsulation is defined as binding together the data and the functions that manipulates them.`,
+    value: `The critical section is a code segment where the shared variables can be accessed. An atomic action is required in a critical section i.e. only one process can execute in its critical section at a time. All the other processes have to wait to execute in their critical sections.`,
   },
   {
-    name: "onlycpp",
-    value: `#include <bits/stdc++.h>
-using namespace std;
-  
-class Encapsulation
-{
-    private:
-        // data hidden from outside world
-        int x;
-          
-    public:
-        // function to set value of 
-        // variable x
-        void set(int a)
-        {
-            x =a;
-        }  
-        // function to return value of
-        // variable x
-        int get()
-        {
-            return x;
-        }
-  };
-      
-// main function
-int main()
-{
-  Encapsulation obj;
-  
-  obj.set(5);
-  
-  cout<<obj.get();
-  return 0;
-}`,
+    name: "image",
+    value: "https://www.tutorialspoint.com/assets/questions/media/12659/Critical%20Section.PNG",
   },
   {
     name: "header",
-    value: `output:`,
+    value: "Solution to the Critical Section Problem",
   },
   {
     name: "description",
-    value: `5`,
+    value: `<b style="fontSize:16px;">Mutual Exclusion</b>: Mutual exclusion implies that only one process can be inside the critical section at any time. If any other processes require the critical section, they must wait until it is free
+
+<b style="fontSize:16px;">Progresst</b>: Progress means that if a process is not using the critical section, then it should not stop any other process from accessing it. In other words, any process can enter a critical section if it is free.
+
+<b style="fontSize:16px;">Bounded Waiting</b>: Bounded waiting means that each process must have a limited waiting time. It should not wait endlessly to access the critical section.
+`,
   },
-  {
-    name: "description",
-    value: `In the above program the variable x is made private. This variable can be accessed and manipulated only using the functions get() and set() which are present inside the class. Thus we can say that here, the variable x and the functions get() and set() are binded together which is nothing but encapsulation.`,
-  },
+
 ];
 
 export default function AddCS() {
@@ -76,11 +42,12 @@ export default function AddCS() {
         doc(
           db,
           "CS-fundamentals",
-          "OOPS-Concept",
+          "Operating-Systems",
           "subtopics",
-          "Encapsulation"
+          "Critical-Section-Problem"
         ),
         {
+          timestamp: new Date(),
           data,
         }
       );

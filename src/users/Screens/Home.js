@@ -30,7 +30,7 @@ export default function Home() {
               imageUrl={
                 "https://img.icons8.com/external-flaticons-flat-flat-icons/64/000000/external-computer-science-computer-science-flaticons-flat-flat-icons.png"
               }
-              url={"/cs-fundamentals/OOPS-Concept/Class-and-Objects"}
+              url={"/cs-fundamentals"}
               title={"Computer Science Fundamentals"}
               description={`  
              Operating Systems , DBMS , Computer Network , OOPs Concept`}
@@ -47,7 +47,11 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <LeftDrawer title={"Crack the Company"} />
+      <LeftDrawer
+        component={
+          <LeftDiv navigate={navigate} title={"Crack the Company"} list={[]} />
+        }
+      />
     </StyleRoot>
   );
 }
