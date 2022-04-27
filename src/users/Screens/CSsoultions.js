@@ -1,7 +1,7 @@
 import { StyleRoot } from "radium";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import LeftDiv from "../Components/LeetCodeScreenComponents/LeftDiv";
+import LeftDiv from "../Components/LeftDiv";
 import "../../App.css";
 import {
   collection,
@@ -11,7 +11,6 @@ import {
   query,
 } from "firebase/firestore";
 import { db } from "../../Api/Firebase";
-import { useDispatch, } from "react-redux";
 import LeftDrawer from "../Helpers/LeftDrawer";
 import { truncate } from "../Helpers/helpersData";
 import { tools } from "../Helpers/EdtiorTools";
@@ -19,9 +18,7 @@ import RightDiv from "../Components/RightDiv";
 
 export default function CSsolutions() {
   const { subjectName, subTopicName } = useParams();
-
   const navigate = useNavigate();
-  //const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
 
   const [problemName, setProblemName] = useState([]);

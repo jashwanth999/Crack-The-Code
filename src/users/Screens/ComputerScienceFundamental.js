@@ -5,7 +5,7 @@ import LeftDrawer from "../Helpers/LeftDrawer";
 import { truncate } from "../Helpers/helpersData";
 import RightDiv from "../Components/RightDiv";
 import { homeTools,} from "../Helpers/EdtiorTools";
-import LeftDiv from "../Components/LeetCodeScreenComponents/LeftDiv";
+import LeftDiv from "../Components/LeftDiv";
 import {Typography } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 export default function ComputerScienceFundamentals() {

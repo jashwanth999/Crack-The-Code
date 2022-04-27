@@ -1,7 +1,7 @@
 import { StyleRoot } from "radium";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import LeftDiv from "../Components/LeetCodeScreenComponents/LeftDiv";
+import LeftDiv from "../Components/LeftDiv";
 import "../../App.css";
 import {
   collection,

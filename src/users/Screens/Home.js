@@ -4,7 +4,7 @@ import FieldCard from "../Components/HomeComponents/FieldCard";
 import "../../App.css";
 import { useNavigate } from "react-router-dom";
 import LeftDrawer from "../Helpers/LeftDrawer";
-import LeftDiv from "../Components/LeetCodeScreenComponents/LeftDiv";
+import LeftDiv from "../Components/LeftDiv";
 import { useDispatch } from "react-redux";
 import { drawerListAction } from "../../Api/actions";
 export default function Home() {

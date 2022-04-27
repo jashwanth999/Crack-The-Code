@@ -1,6 +1,7 @@
+import { Button, Paper } from "@mui/material";
 import { doc, setDoc } from "firebase/firestore";
 import { StyleRoot } from "radium";
-import React from "react";
+import React, { useState } from "react";
 import { db } from "../Api/Firebase";
 import { tools } from "../users/Helpers/EdtiorTools";
 
@@ -8,34 +9,26 @@ import { tools } from "../users/Helpers/EdtiorTools";
 const data = [
   {
     name: "title",
-    value: "Critical Section Problem",
+    value: "Virtual Memory",
   },
 
   {
     name: "description",
-    value: `The critical section is a code segment where the shared variables can be accessed. An atomic action is required in a critical section i.e. only one process can execute in its critical section at a time. All the other processes have to wait to execute in their critical sections.`,
+    value: `- It is the separation of logical memory from physical memory. This separation provides large virtual memory for programmers when only small physical memory is available.
+  
+- System appears to have more memory than what actually exists.
+`,
   },
   {
     name: "image",
-    value: "https://www.tutorialspoint.com/assets/questions/media/12659/Critical%20Section.PNG",
+    value:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ88X31izx0I9B4-UOF9yZLt0cY5xRCGFfh0w&usqp=CAU",
   },
-  {
-    name: "header",
-    value: "Solution to the Critical Section Problem",
-  },
-  {
-    name: "description",
-    value: `<b style="fontSize:16px;">Mutual Exclusion</b>: Mutual exclusion implies that only one process can be inside the critical section at any time. If any other processes require the critical section, they must wait until it is free
-
-<b style="fontSize:16px;">Progresst</b>: Progress means that if a process is not using the critical section, then it should not stop any other process from accessing it. In other words, any process can enter a critical section if it is free.
-
-<b style="fontSize:16px;">Bounded Waiting</b>: Bounded waiting means that each process must have a limited waiting time. It should not wait endlessly to access the critical section.
-`,
-  },
-
 ];
 
+const editors = ["T", "H", "D", "</>", "I"];
 export default function AddCS() {
+  const [addData, setAddData] = useState([]);
   const addProblem = () => {
     try {
       setDoc(
@@ -44,7 +37,7 @@ export default function AddCS() {
           "CS-fundamentals",
           "Operating-Systems",
           "subtopics",
-          "Critical-Section-Problem"
+          "Virtual-Memory"
         ),
         {
           timestamp: new Date(),
@@ -70,6 +63,15 @@ export default function AddCS() {
             );
           })}
         </div>
+        <div style={editorDiv}>
+          <Paper style={{ backgroundColor: "black" }}>
+            {editors.map((x, index) => (
+              <Button style={toolNameBox} key={index}>
+                {x}
+              </Button>
+            ))}
+          </Paper>
+        </div>
       </div>
     </StyleRoot>
   );
@@ -94,4 +96,18 @@ const rightDiv = {
   flexDirection: "column",
   margin: 10,
   "@media (max-width: 600px)": {},
+};
+
+const toolNameBox = {
+  padding: 2,
+  fontWeight: "bold",
+  color: "white",
+};
+
+const editorDiv = {
+  position: "fixed",
+  bottom: 0,
+  display: "flex",
+  justifyContent: "center",
+  width: "100%",
 };
