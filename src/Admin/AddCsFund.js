@@ -1,34 +1,63 @@
+import React, { useState, useEffect } from "react";
 import { Button, Paper } from "@mui/material";
 import { doc, setDoc } from "firebase/firestore";
 import { StyleRoot } from "radium";
-import React, { useState } from "react";
 import { db } from "../Api/Firebase";
 import { tools } from "../users/Helpers/EdtiorTools";
-
+import parser from "html-react-parser";
 //<b style="fontSize:16px;">1.Long Term Scheduler (Job Scheduler) </b>
+
+const bold = (value) => {
+  return `<b> ${value} </b>`;
+};
 const data = [
   {
     name: "title",
-    value: "Virtual Memory",
+    value: "Page Replacement Algorithms",
   },
 
   {
     name: "description",
-    value: `- It is the separation of logical memory from physical memory. This separation provides large virtual memory for programmers when only small physical memory is available.
+    value: `- The Page Replacement Algorithm decides which memory page is to be replaced. The process of replacement is sometimes called swap out or write to disk.
   
-- System appears to have more memory than what actually exists.
-`,
+- These algorithms aim to reduce the number of page faults.`,
   },
   {
-    name: "image",
-    value:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ88X31izx0I9B4-UOF9yZLt0cY5xRCGFfh0w&usqp=CAU",
+    name: "header",
+    value: "Algorithms",
+  },
+  {
+    name: "description",
+    value: `<b style="fontSize:16px;text-decoration:underline;text-underline-offset: 2px;">First In First Out (FIFO)</b>
+
+-In this algorithm, the operating system keeps track of all pages in the memory in a queue, the oldest page is in the front of the queue.
+
+- When a page needs to be replaced,the page in the front of the queue is selected for removal.
+
+
+<b style="fontSize:16px;text-decoration:underline;text-underline-offset: 2px;">Optimal Page Replacement</b>
+
+- This algorithm replaces the page which will not be referred for so long in future, i.e., the pages in the memory which are going to be referred farthest in the future are replaced.
+
+
+<b style="fontSize:16px;text-decoration:underline;text-underline-offset: 2px;">Least Recently Used (LRU)</b>
+
+- This algorithm keeps track of page usage over a short period of time. It works on the idea that the pages that have been most heavily used in the past are most likely to be used heavily in the future too.`,
   },
 ];
 
 const editors = ["T", "H", "D", "</>", "I"];
 export default function AddCS() {
-  const [addData, setAddData] = useState([]);
+  const [selected, setSelected] = useState("");
+
+  useEffect(() => {
+    const saveSelection = () => {
+      setSelected(window.getSelection().toString());
+    };
+    document.addEventListener("mouseup", saveSelection);
+    return () => document.removeEventListener("mouseup", saveSelection);
+  }, []);
+
   const addProblem = () => {
     try {
       setDoc(
@@ -37,7 +66,7 @@ export default function AddCS() {
           "CS-fundamentals",
           "Operating-Systems",
           "subtopics",
-          "Virtual-Memory"
+          "Page-Replacement-Algorithms"
         ),
         {
           timestamp: new Date(),
@@ -54,6 +83,8 @@ export default function AddCS() {
       <div style={{ display: "flex", flex: 1, flexDirection: "row" }}>
         <div style={leftDiv}></div>
         <div style={rightDiv}>
+          {parser(bold(selected))}
+
           <button onClick={addProblem}> add code</button>
           {data.map((x, index) => {
             return (

@@ -1,7 +1,6 @@
 import CodeEditor from "@uiw/react-textarea-code-editor";
 import { StyleRoot } from "radium";
 
-
 export default function Editor(props) {
   // onChange={(evn) => setCode(evn.target.value)}
   return (
@@ -14,7 +13,6 @@ export default function Editor(props) {
           padding={15}
           style={editorStyle}
           disabled={props.disabled}
-     
         />
       </div>
     </StyleRoot>
@@ -26,8 +24,8 @@ const editorStyle = {
   backgroundColor: "#212F3C",
   color: "#D5DBDB",
   overflow: "auto",
-   lineHeight:1.5,
- 
+  lineHeight: 1.5,
+
   fontFamily:
     "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
 };

@@ -5,14 +5,14 @@ import Editor from "./Editor";
 import Code from "../Helpers/Code";
 import { colorList } from "./helpersData";
 import parser from "html-react-parser";
-import { Paper} from "@mui/material";
+import { Paper } from "@mui/material";
 export const tools = {
   title: (value) => (
     <h2 style={{ color: "#3498DB", textAlign: "center" }}>{value}</h2>
   ),
   header: (value) => <h3 style={{ margin: 10 }}>{value}</h3>,
   description: (value) => (
-    <Paper style={editorStyle}>
+    <Paper elevation={0} style={editorStyle}>
       <p style={textStyle}>{parser(value)}</p>
     </Paper>
   ),
@@ -55,12 +55,13 @@ const textStyle = {
   whiteSpace: "pre-wrap",
   fontFamily:
     "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
-  lineHeight: 1.4,
+  lineHeight: 1.3,
   fontSize: 15,
 };
 const editorStyle = {
-  padding: 10,
-
+  padding: 6,
+  paddingTop: 0,
+  paddingBottom: 0,
   borderRadius: 5,
   backgroundColor: "#212F3C",
   color: "#D5DBDB",
