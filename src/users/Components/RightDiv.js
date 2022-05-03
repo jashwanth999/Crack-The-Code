@@ -1,4 +1,7 @@
 import ReactLoading from "react-loading";
+import Code from "../Helpers/Code";
+import parser from "html-react-parser";
+import { Paper, Typography } from "@mui/material";
 export default function RightDiv(props) {
   if (props.loading)
     return (
@@ -13,19 +16,55 @@ export default function RightDiv(props) {
         />
       </div>
     );
- 
-  return (
-    <div style={rootDiv}>
-      {props.problemData &&
-        props.problemData.map((x, index) => {
-          return (
-            <div style={{ textAlign: "left" }} key={index}>
-              {props.tools[x.name](x.value)}
-            </div>
-          );
-        })}
-    </div>
-  );
+  if (props.screen === "cs")
+    return (
+      <div style={{ width: "99%" }}>
+        <h2 style={{ color: "#3498DB", textAlign: "center" }}>
+          {props.problemData?.probName}
+        </h2>
+        <Paper
+          elevation={0}
+          style={{
+            margin: 10,
+            padding: 8,
+            border: "0.5px solid grey",
+          }}
+        >
+          {props.problemData &&
+            props.problemData.blocks.map((block, index) => {
+              if (block.code) {
+                return <Code key={index} code={block.val} language={"cpp"} />;
+              } else {
+                return (
+                  <Paper elevation={0} key={index}>
+                    <Typography
+                      style={{
+                        textAlign: "left",
+                      }}
+                    >
+                      {parser(block.val)}
+                    </Typography>
+                  </Paper>
+                );
+              }
+            })}
+        </Paper>
+        <br />
+      </div>
+    );
+  else
+    return (
+      <div style={rootDiv}>
+        {props.problemData &&
+          props.problemData.map((x, index) => {
+            return (
+              <div style={{ textAlign: "left" }} key={index}>
+                {props.tools[x.name](x.value)}
+              </div>
+            );
+          })}
+      </div>
+    );
 }
 
 const rootDiv = {

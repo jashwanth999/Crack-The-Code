@@ -13,9 +13,9 @@ export default function Code(props) {
           keyMap: "sublime",
           mode: `${props.language}`,
           readOnly: `${props.disabled}`,
+          lineNumbers: false,
         }}
       />
-      
     </div>
   );
 }

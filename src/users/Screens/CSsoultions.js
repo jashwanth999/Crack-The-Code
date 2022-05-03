@@ -27,7 +27,7 @@ export default function CSsolutions() {
     setLoading(true);
     if (subTopicName) {
       const unsub = onSnapshot(
-        doc(db, "CS-fundamentals", subjectName, "subtopics", subTopicName),
+        doc(db, "cs-fundamentals", subjectName, "subtopics", subTopicName),
         (doc) => {
           setProblemData(doc.data());
           setLoading(false);
@@ -39,7 +39,7 @@ export default function CSsolutions() {
 
   useEffect(() => {
     const ref = query(
-      collection(db, "CS-fundamentals", subjectName, "subtopics"),
+      collection(db, "cs-fundamentals", subjectName, "subtopics"),
       orderBy("timestamp", "asc")
     );
     const unsub = onSnapshot(ref, (snapshot) => {
@@ -65,8 +65,9 @@ export default function CSsolutions() {
         <div className="rightDiv" style={rightDiv}>
           <RightDiv
             loading={loading}
-            problemData={problemData?.data}
+            problemData={problemData}
             tools={tools}
+            screen="cs"
           />
         </div>
       </div>

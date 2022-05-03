@@ -83,8 +83,7 @@ export default function AddCS() {
       <div style={{ display: "flex", flex: 1, flexDirection: "row" }}>
         <div style={leftDiv}></div>
         <div style={rightDiv}>
-          {parser(bold(selected))}
-
+     
           <button onClick={addProblem}> add code</button>
           {data.map((x, index) => {
             return (

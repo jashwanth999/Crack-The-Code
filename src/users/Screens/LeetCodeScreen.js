@@ -71,6 +71,7 @@ export default function SolutionScreen() {
             text={transformedText}
             problemData={problemData?.data}
             tools={leetcodeTools}
+            screen="leetcode"
           />
         </div>
       </div>

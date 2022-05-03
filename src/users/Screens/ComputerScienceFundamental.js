@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import LeftDrawer from "../Helpers/LeftDrawer";
 import { truncate } from "../Helpers/helpersData";
 import RightDiv from "../Components/RightDiv";
-import { homeTools,} from "../Helpers/EdtiorTools";
+import { homeTools } from "../Helpers/EdtiorTools";
 import LeftDiv from "../Components/LeftDiv";
-import {Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 export default function ComputerScienceFundamentals() {
   const navigate = useNavigate();
@@ -51,16 +51,19 @@ export default function ComputerScienceFundamentals() {
           <LeftDiv navigate={navigate} title={"Crack the Company"} list={[]} />
         </div>
         <div className="rightDiv" style={rightDiv}>
-          <RightDiv problemData={data} loading={loading} tools={homeTools} />
+          <RightDiv
+            problemData={data}
+            loading={loading}
+            tools={homeTools}
+            screen="cs-fundamentals"
+          />
           <br />
           <div style={{ textAlign: "left", margin: 10 }}>
             {subjects.map((val, index) => (
               <Typography
                 onClick={() => {
                   navigate(
-                    `${val.subjectName.replace(/ /g, "-")}/${
-                      val.subTopic
-                    }`
+                    `${val.subjectName.replace(/ /g, "-")}/${val.subTopic}`
                   );
                 }}
                 key={index}
