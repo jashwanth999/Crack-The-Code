@@ -57,8 +57,8 @@ export default function ComputerScienceFundamentals() {
             tools={homeTools}
             screen="cs-fundamentals"
           />
-          <br />
-          <div style={{ textAlign: "left", margin: 10 }}>
+         
+          <div style={{ textAlign: "left", margin: 10, marginTop: 0 }}>
             {subjects.map((val, index) => (
               <Typography
                 onClick={() => {

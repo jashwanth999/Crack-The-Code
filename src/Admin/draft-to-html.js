@@ -803,6 +803,8 @@ export function draftToHtml(
       blocks.forEach(function (block) {
         if (block.type === "code") {
           html.push({ val: block.text, code: true });
+        } else if (block.type === "blockquote") {
+          html.push({ val: block.text, output: true });
         } else if (isList(block.type)) {
           listBlocks.push(block);
         } else {

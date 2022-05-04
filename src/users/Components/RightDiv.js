@@ -2,6 +2,7 @@ import ReactLoading from "react-loading";
 import Code from "../Helpers/Code";
 import parser from "html-react-parser";
 import { Paper, Typography } from "@mui/material";
+import Editor from "../Helpers/Editor";
 export default function RightDiv(props) {
   if (props.loading)
     return (
@@ -34,6 +35,8 @@ export default function RightDiv(props) {
             props.problemData.blocks.map((block, index) => {
               if (block.code) {
                 return <Code key={index} code={block.val} language={"cpp"} />;
+              } else if (block.output) {
+                return  <Editor code={block.val} language={"text"} disabled={true} />
               } else {
                 return (
                   <Paper elevation={0} key={index}>

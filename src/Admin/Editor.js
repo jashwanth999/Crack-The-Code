@@ -35,6 +35,7 @@ function TextEditor() {
       alert(error.message);
     }
   };
+  console.log(convertToRaw(editorState.getCurrentContent()).blocks);
 
   return (
     <div style={{ display: "flex", flex: 1, flexDirection: "row" }}>
@@ -61,6 +62,8 @@ function TextEditor() {
           {blocks.map((block, index) => {
             if (block.code) {
               return <Code code={block.val} language={"cpp"} />;
+            } else if (block.output) {
+              return <Code code={block.val} language={"text"} />;
             } else {
               return (
                 <p

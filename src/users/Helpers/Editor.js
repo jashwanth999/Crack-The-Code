@@ -21,10 +21,10 @@ export default function Editor(props) {
 const editorStyle = {
   fontSize: "0.9rem",
   borderRadius: 5,
-  backgroundColor: "#212F3C",
-  color: "#D5DBDB",
+  backgroundColor: "#f7f9faf2",
+  color: "black",
   overflow: "auto",
-  lineHeight: 1.5,
+  lineHeight: 1.3,
 
   fontFamily:
     "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",

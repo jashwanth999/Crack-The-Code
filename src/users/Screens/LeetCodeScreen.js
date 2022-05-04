@@ -82,6 +82,9 @@ export default function SolutionScreen() {
             navigate={navigate}
             truncate={truncate}
             title={"Leetcode Problems"}
+            first={"leetcode-solutions"}
+            text={text}
+            url={url}
           />
         }
       />

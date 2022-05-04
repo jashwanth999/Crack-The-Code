@@ -52,10 +52,8 @@ export const leetcodeTools = {
 };
 
 const textStyle = {
-  whiteSpace: "pre-wrap",
-  fontFamily:
-    "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
-  lineHeight: 1.3,
+  fontFamily: "Arial",
+  lineHeight: 1.6,
   fontSize: 15,
 };
 const editorStyle = {
@@ -63,12 +61,10 @@ const editorStyle = {
   paddingTop: 0,
   paddingBottom: 0,
   borderRadius: 5,
-  backgroundColor: "#212F3C",
-  color: "#D5DBDB",
+  backgroundColor: "white",
+  color: "black",
   overflow: "auto",
   lineHeight: 0,
-  fontFamily:
-    "ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace",
   margin: 10,
 };
 
@@ -99,11 +95,12 @@ const statementDiv = {
 };
 const headerStyle = {
   margin: 10,
-  borderLeft: "solid #2E86C1 4px",
   paddingTop: 0,
   paddingLeft: 5,
   paddingBottom: 0,
   textAlign: "left",
+  textDecoration: "underline",
+  textUnderlineOffset: 1,
 };
 
 const complexityTexts = {
@@ -115,7 +112,7 @@ const complexityTexts = {
 };
 
 const complexityPaper = {
-  backgroundColor: "#212F3C",
+  backgroundColor: "#f7f9faf2",
   margin: 10,
   display: "flex",
   textAlign: "left",
