@@ -11,6 +11,7 @@ export default function LeftDiv(props) {
             component="a"
             onClick={() => {
               props.navigate(`/${props.url}/${val.replace(/ /g, "-")}`);
+              document.title = val.replace(/-/g, " ");
             }}
           >
             <ListItemText

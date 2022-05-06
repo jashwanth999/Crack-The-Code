@@ -1,28 +1,18 @@
 import * as React from "react";
 import { Button, Divider, Typography } from "@mui/material";
 
-
 export default function FieldCard(props) {
-
-
   return (
     <div style={rootDiv}>
       <div style={headDiv}>
-        <img
-          style={image}
-          alt=""
-          src={props.imageUrl}
-        />
+        <img style={image} alt="" src={props.imageUrl} />
         <h3> {props.title}</h3>
       </div>
-      <Typography >
-        {props.description}
-      
-      
-      </Typography>
+      <Typography>{props.description}</Typography>
       <Button
         onClick={() => {
           props.navigate(`${props.url}`);
+          document.title = props.title;
         }}
         style={{
           color: "#2ECC71",
@@ -54,5 +44,4 @@ const image = {
   borderRadius: 5,
   padding: 4,
   marginRight: 3,
- 
 };
