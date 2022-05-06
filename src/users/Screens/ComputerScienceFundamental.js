@@ -57,7 +57,7 @@ export default function ComputerScienceFundamentals() {
             tools={homeTools}
             screen="cs-fundamentals"
           />
-         
+
           <div style={{ textAlign: "left", margin: 10, marginTop: 0 }}>
             {subjects.map((val, index) => (
               <Typography
@@ -65,6 +65,8 @@ export default function ComputerScienceFundamentals() {
                   navigate(
                     `${val.subjectName.replace(/ /g, "-")}/${val.subTopic}`
                   );
+
+                  document.title = val.subjectName;
                 }}
                 key={index}
                 style={subjectText}
