@@ -28,7 +28,7 @@ export default function LeftDrawer(props) {
 }
 const rootDivBox = {
   width: 250,
-  backgroundColor: "#212F3C",
+  backgroundColor: "#f7f9faf",
   height: "100vh",
   textAlign: "left",
   overflowY: "scroll",

@@ -94,7 +94,7 @@ const rootDiv = {
 const leftDiv = {
   display: "flex",
   flex: 0.25,
-  backgroundColor: "#212F3C",
+  backgroundColor: "#F8F9F9",
   height: "90vh",
   justifyContent: "center",
   overflowY: "scroll",

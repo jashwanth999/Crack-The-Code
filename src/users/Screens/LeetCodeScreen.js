@@ -59,7 +59,7 @@ export default function SolutionScreen() {
             list={problemsList}
             navigate={navigate}
             truncate={truncate}
-            title={"Leetcode Problems"}
+            title={"Leetcode Solutions"}
             first={"leetcode-solutions"}
             text={text}
             url={url}
@@ -99,7 +99,7 @@ const rootDiv = {
 const leftDiv = {
   display: "flex",
   flex: 0.25,
-  backgroundColor: "#212F3C",
+  backgroundColor: "#F8F9F9",
   height: "90vh",
   justifyContent: "center",
   overflowY: "scroll",

@@ -13,8 +13,10 @@ export default function RoutesComponent() {
   return (
     <>
       <Routes>
+        {/*  User */}
+
         <Route path="/" element={<Home />} />
-        <Route path="/leetcode-solutions/:id" element={<LeetCodeScreen />} />
+        <Route path="/Leetcode-Solutions/:id" element={<LeetCodeScreen />} />
         <Route
           exact={true}
           path="/cs-fundamentals"
@@ -25,6 +27,8 @@ export default function RoutesComponent() {
           path="/cs-fundamentals/:subjectName/:subTopicName"
           element={<CSsolutions />}
         />
+
+        {/*  Admin */}
         <Route path="/Addleetcode" element={<AddLeetcode />} />
         <Route path="/Addcs" element={<AddCS />} />
         <Route path="/Compiler" element={<Compiler />} />

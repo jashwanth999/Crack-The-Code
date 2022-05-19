@@ -1,27 +1,28 @@
 import * as React from "react";
 import { Button, Divider, Typography } from "@mui/material";
 
-export default function FieldCard(props) {
+export default function ArticleCard(props) {
   return (
     <div style={rootDiv}>
       <div style={headDiv}>
-        <img style={image} alt="" src={props.imageUrl} />
-        <h3> {props.title}</h3>
+        <h2 style={{ margin: 4 }}> {props.title}</h2>
       </div>
-      <Typography>{props.description}</Typography>
+      <Typography style={{ margin: 4, fontSize: 17,fontFamily:'Roboto Condensed'}}>
+        {props.description}
+      </Typography>
       <Button
         onClick={() => {
           props.navigate(`${props.url}`);
           document.title = props.title;
         }}
         style={{
-          color: "#2ECC71",
+          color: "#1B93B4",
           fontWeight: "bold",
         }}
         variant="text"
       >
         {" "}
-        Click here
+        Continue
       </Button>
       <Divider style={{ color: "grey", height: 4 }} />
     </div>
