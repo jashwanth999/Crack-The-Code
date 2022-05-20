@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { StyleRoot } from "radium";
 import { useNavigate } from "react-router-dom";
 import LeftDrawer from "../Helpers/LeftDrawer";
-import { truncate } from "../Helpers/helpersData";
+import { homeData, truncate } from "../Helpers/helpersData";
 import RightDiv from "../Components/RightDiv";
 import { homeTools } from "../Helpers/EdtiorTools";
 import LeftDiv from "../Components/LeftDiv";
 import { Typography } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import LeftDiv2 from "../Components/LeftDiv2";
 export default function ComputerScienceFundamentals() {
   const navigate = useNavigate();
 
@@ -48,7 +49,12 @@ export default function ComputerScienceFundamentals() {
     <StyleRoot>
       <div className="App" style={rootDiv}>
         <div className="leftDiv" style={leftDiv}>
-          <LeftDiv navigate={navigate} title={"Crack the Company"} list={[]} />
+          <LeftDiv2
+            navigate={navigate}
+            truncate={truncate}
+            title={"Quick Links"}
+            list={homeData}
+          />
         </div>
         <div className="rightDiv" style={rightDiv}>
           <RightDiv
@@ -81,10 +87,11 @@ export default function ComputerScienceFundamentals() {
 
       <LeftDrawer
         component={
-          <LeftDiv
-            title={"CS Fundamentals"}
-            truncate={truncate}
+          <LeftDiv2
             navigate={navigate}
+            truncate={truncate}
+            title={"Quick Links"}
+            list={homeData}
           />
         }
       />

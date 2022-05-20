@@ -27,6 +27,7 @@ export default function SolutionScreen() {
   const [problemData, setProblemData] = useState("");
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
+
   const text = id.replace(/-/g, " ");
   const transformedText = `${text[0]}. ${text.substring(2).replace(/-/g, " ")}`;
   useEffect(() => {
@@ -50,6 +51,7 @@ export default function SolutionScreen() {
     return unsub;
   }, [dispatch]);
   const url = `leetcode-solutions`;
+  
 
   return (
     <StyleRoot>
@@ -100,7 +102,7 @@ const leftDiv = {
   display: "flex",
   flex: 0.25,
   backgroundColor: "#F8F9F9",
-  height: "90vh",
+  height: "100vh",
   justifyContent: "center",
   overflowY: "scroll",
   "@media (max-width: 600px)": {
@@ -111,7 +113,7 @@ const rightDiv = {
   display: "flex",
   flex: 1,
   backgroundColor: "white",
-  height: "90vh",
+  height: "100vh",
   overflow: "auto",
   "@media (max-width: 600px)": {},
 };

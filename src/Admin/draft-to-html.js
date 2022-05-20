@@ -45,7 +45,7 @@ var blockTypesMapping = {
   "unordered-list-item": "ul",
   "ordered-list-item": "ol",
   blockquote: "blockquote",
-  code: "pre",
+ 
 };
 /**
  * Function will return HTML tag for a block.

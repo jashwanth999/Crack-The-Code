@@ -11,7 +11,7 @@ export default function CodeTab(props) {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
+};
 
   return (
     <Box sx={{ typography: "body1" }}>

@@ -12,7 +12,7 @@ export const colorList = {
   "Sliding Window": "#45B39D",
   DP: "#81E035",
   Matrix: "#35C7E0",
-  "Binary Search":'#CC106B'
+  "Binary Search": "#CC106B",
 };
 export function truncate(string, length) {
   if (string.length > length) return string.substring(0, length) + "...";
@@ -38,3 +38,18 @@ public static void main(String args[]) {
 }`,
   python: `print("Hello World")`,
 };
+
+export const homeData = [
+  {
+    text: "Computer Science",
+    url: "/cs-fundamentals",
+  },
+  {
+    text: "Data structures and Algo",
+    url: "/cs-fundamentals",
+  },
+  {
+    text: "Leetcode Solutions",
+    url: "/leetcode-solutions/1-Two-Sum",
+  },
+];

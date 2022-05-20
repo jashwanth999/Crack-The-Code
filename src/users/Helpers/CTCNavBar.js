@@ -20,7 +20,7 @@ export default function CTCNavBar() {
     <StyleRoot>
       <AppBar
         style={{
-          backgroundColor: "rgb(0, 30, 60)",
+          backgroundColor: "white",
           textAlign: "center",
 
           zIndex: 1,
@@ -35,7 +35,7 @@ export default function CTCNavBar() {
             aria-label="open drawer"
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <MenuIcon />
+            <MenuIcon style={{ color: "black" }} />
           </IconButton>
           <div style={titleDiv}>
             <img

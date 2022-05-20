@@ -1,28 +1,32 @@
 import * as React from "react";
 import { Button, Divider, Typography } from "@mui/material";
-
+import parser from "html-react-parser";
+import { truncate } from "../../Helpers/helpersData";
 export default function ArticleCard(props) {
   return (
     <div style={rootDiv}>
       <div style={headDiv}>
         <h2 style={{ margin: 4 }}> {props.title}</h2>
       </div>
-      <Typography style={{ margin: 4, fontSize: 17,fontFamily:'Roboto Condensed'}}>
-        {props.description}
+      <Typography
+        style={{ margin: 4, fontSize: 17, fontFamily: "Roboto Condensed" }}
+      >
+        {parser(truncate(props.description, 300))}
       </Typography>
       <Button
         onClick={() => {
-          props.navigate(`${props.url}`);
+          props.navigate(`/articles/${props.title.replace(/ /g, "-")}`);
           document.title = props.title;
         }}
         style={{
-          color: "#1B93B4",
+          backgroundColor: "#EC7063",
           fontWeight: "bold",
+          color:'white'
         }}
         variant="text"
       >
         {" "}
-        Continue
+        Continue {">>"}
       </Button>
       <Divider style={{ color: "grey", height: 4 }} />
     </div>

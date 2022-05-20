@@ -3,6 +3,7 @@ import Radium from "radium";
 import CTCNavBar from "./users/Helpers/CTCNavBar";
 import RoutesComponent from "./users/Helpers/Routes";
 import Footer from "./users/Components/Footer";
+import { Divider } from "@mui/material";
 
 function App() {
   return (
@@ -11,6 +12,8 @@ function App() {
       <div style={{ marginTop: 58 }}>
         <RoutesComponent />
       </div>
+      <br />
+      <Divider />
       <Footer />
     </div>
   );

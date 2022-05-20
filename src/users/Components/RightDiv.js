@@ -28,7 +28,7 @@ export default function RightDiv(props) {
           style={{
             margin: 10,
             padding: 8,
-            border: "0.5px solid grey",
+           
           }}
         >
           {props.problemData &&

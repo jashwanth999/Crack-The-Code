@@ -7,32 +7,28 @@ import LeftDrawer from "../Helpers/LeftDrawer";
 //import LeftDiv from "../Components/LeftDiv";
 import { useDispatch } from "react-redux";
 import { drawerListAction } from "../../Api/actions";
-import { truncate } from "../Helpers/helpersData";
+import { truncate, homeData } from "../Helpers/helpersData";
 import LeftDiv2 from "../Components/LeftDiv2";
+import { collection, doc, onSnapshot } from "firebase/firestore";
+import { db } from "../../Api/Firebase";
 export default function Home() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [articles, setArticles] = React.useState([]);
   React.useEffect(() => {
     dispatch(drawerListAction([]));
   }, [dispatch]);
-  React.useEffect(() => {
-    console.log("home");
-  }, []);
 
-  const data = [
-    {
-      text: "Computer Science",
-      url: "/cs-fundamentals",
-    },
-    {
-      text: "Data structures and Algo",
-      url: "/cs-fundamentals",
-    },
-    {
-      text: "Leetcode Solutions",
-      url: "/leetcode-solutions/1-Two-Sum",
-    },
-  ];
+  React.useEffect(() => {
+    // setLoading(true);
+
+    const unsub = onSnapshot(collection(db, "articles"), (snapshot) => {
+      setArticles(snapshot.docs.map((doc) => doc.data()));
+      // setLoading(false);
+    });
+    return unsub;
+  }, []);
 
   return (
     <StyleRoot>
@@ -42,17 +38,19 @@ export default function Home() {
             navigate={navigate}
             truncate={truncate}
             title={"Quick Links"}
-            list={data}
+            list={homeData}
           />
         </div>
         <div style={rightDiv}>
           <div style={rightCardDiv}>
-            <ArticleCard
-              navigate={navigate}
-              url={"/article"}
-              title={"For Loop in C++"}
-              description={`In C and all other modern programming languages, iteration statements (also called loops) allow a set of instructions to be repeatedly executed until a certain condition is reached.`}
-            />
+            {articles.map((article, index) => (
+              <ArticleCard
+                navigate={navigate}
+                url={"/article"}
+                title={article.probName}
+                description={article.blocks[0].val}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -62,7 +60,7 @@ export default function Home() {
             navigate={navigate}
             truncate={truncate}
             title={"Quick Links"}
-            list={data}
+            list={homeData}
           />
         }
       />
@@ -78,10 +76,11 @@ const rootDiv = {
 const leftDiv = {
   display: "flex",
   flex: 0.25,
-  backgroundColor: "#f7f9faf2",
+  backgroundColor: "#F8F9F9",
   height: "90vh",
+  flexDirection: "column",
+  textAlign: "left",
   overflowY: "scroll",
-  justifyContent: "center",
   "@media (max-width: 600px)": {
     display: "none",
   },
@@ -89,7 +88,7 @@ const leftDiv = {
 const rightDiv = {
   display: "flex",
   flex: 1,
-  height: "90vh",
+  height: "100vh",
   overflowY: "scroll",
   "@media (max-width: 600)": {
     flex: 1,

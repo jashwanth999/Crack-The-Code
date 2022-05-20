@@ -8,6 +8,10 @@ import CodeEditor from "@uiw/react-textarea-code-editor";
 export default function Tabs(props) {
   const [value, setValue] = React.useState("cpp");
 
+  const [cpp, setCpp] = React.useState("");
+  const [java, setJava] = React.useState("");
+  const [python, setPython] = React.useState("");
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -24,29 +28,27 @@ export default function Tabs(props) {
         </Box>
         <TabPanel value="cpp">
           <CodeEditor
-            value={props.cppValue}
+            value={cpp}
             language={"cpp"}
-            placeholder={`paste cpp code`}
+           
             style={editorStyle}
-            onChange={(e) => props.setCppValue(e.target.value)}
+            onChange={(e) => setCpp(e.target.value)}
           />
         </TabPanel>
         <TabPanel value="java">
           <CodeEditor
-            value={props.javaValue}
+            value={java}
             language={"java"}
-            placeholder={`paste java code`}
             style={editorStyle}
-            onChange={(e) => props.setJavaValue(e.target.value)}
+            onChange={(e) => setJava(e.target.value)}
           />
         </TabPanel>
         <TabPanel value="python">
           <CodeEditor
-            value={props.pythonValue}
+            value={python}
             language={"python"}
-            placeholder={`paste python code`}
             style={editorStyle}
-            onChange={(e) => props.setPythonValue(e.target.value)}
+            onChange={(e) => setPython(e.target.value)}
           />
         </TabPanel>
       </TabContext>

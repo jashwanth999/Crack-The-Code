@@ -12,12 +12,13 @@ import {
 } from "firebase/firestore";
 import { db } from "../../Api/Firebase";
 import LeftDrawer from "../Helpers/LeftDrawer";
-import { truncate } from "../Helpers/helpersData";
+import { homeData, truncate } from "../Helpers/helpersData";
 import { tools } from "../Helpers/EdtiorTools";
 import RightDiv from "../Components/RightDiv";
+import LeftDiv2 from "../Components/LeftDiv2";
 
-export default function CSsolutions() {
-  const { subjectName, subTopicName } = useParams();
+export default function ArticleSolution() {
+  const { articleId } = useParams();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
@@ -25,41 +26,25 @@ export default function CSsolutions() {
   const [problemData, setProblemData] = useState(null);
   useEffect(() => {
     setLoading(true);
-    if (subTopicName) {
-      const unsub = onSnapshot(
-        doc(db, "cs-fundamentals", subjectName, "subtopics", subTopicName),
-        (doc) => {
-          setProblemData(doc.data());
-          setLoading(false);
-        }
-      );
-      return unsub;
-    }
-  }, [subTopicName, subjectName]);
 
-  useEffect(() => {
-    const ref = query(
-      collection(db, "cs-fundamentals", subjectName, "subtopics"),
-      orderBy("timestamp", "asc")
-    );
-    const unsub = onSnapshot(ref, (snapshot) => {
-      setProblemName(snapshot.docs.map((doc) => doc.id));
+    const unsub = onSnapshot(doc(db, "articles", articleId), (doc) => {
+      setProblemData(doc.data());
+      setLoading(false);
     });
     return unsub;
-  }, [subjectName]);
-  const url = `cs-fundamentals/${subjectName}`;
+  }, [articleId]);
+
+  const url = `articles/${articleId}`;
 
   return (
     <StyleRoot>
       <div className="App" style={rootDiv}>
         <div className="leftDiv" style={leftDiv}>
-          <LeftDiv
-            list={problemName}
+          <LeftDiv2
             navigate={navigate}
             truncate={truncate}
-            title={subjectName.replace(/-/g, " ")}
-            url={url}
-            text={subTopicName.replace(/-/g, " ")}
+            title={"Quick Links"}
+            list={homeData}
           />
         </div>
         <div className="rightDiv" style={rightDiv}>
@@ -73,13 +58,11 @@ export default function CSsolutions() {
       </div>
       <LeftDrawer
         component={
-          <LeftDiv
-            list={problemName}
+          <LeftDiv2
             navigate={navigate}
             truncate={truncate}
-            title={subjectName.replace(/-/g, " ")}
-            url={url}
-            text={subTopicName.replace(/-/g, " ")}
+            title={"Quick Links"}
+            list={homeData}
           />
         }
       />
@@ -95,10 +78,10 @@ const leftDiv = {
   display: "flex",
   flex: 0.25,
   backgroundColor: "#F8F9F9",
-  height: "90vh",
-  flexDirection: "column",
+  height: "100vh",
   textAlign: "left",
   overflowY: "scroll",
+  flexDirection: "column",
   "@media (max-width: 600px)": {
     display: "none",
   },

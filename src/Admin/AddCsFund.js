@@ -52,7 +52,7 @@ const data = [];
 
 const editors = ["T", "H", "D", "</>", "I"];
 export default function AddCS() {
-  const [selected, setSelected] = useState("");
+const [selected, setSelected] = useState("");
 
   useEffect(() => {
     const saveSelection = () => {
