@@ -51,7 +51,6 @@ export default function SolutionScreen() {
     return unsub;
   }, [dispatch]);
   const url = `leetcode-solutions`;
-  
 
   return (
     <StyleRoot>
@@ -101,7 +100,7 @@ const rootDiv = {
 const leftDiv = {
   display: "flex",
   flex: 0.25,
-  backgroundColor: "#F8F9F9",
+  backgroundColor: "#212F3C",
   height: "100vh",
   justifyContent: "center",
   overflowY: "scroll",

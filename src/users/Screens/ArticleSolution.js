@@ -77,8 +77,8 @@ const rootDiv = {
 const leftDiv = {
   display: "flex",
   flex: 0.25,
-  backgroundColor: "#F8F9F9",
-  height: "100vh",
+  backgroundColor: "#212F3C",
+  height: "97vh",
   textAlign: "left",
   overflowY: "scroll",
   flexDirection: "column",
@@ -90,7 +90,8 @@ const rightDiv = {
   display: "flex",
   flex: 1,
   backgroundColor: "white",
-  height: "100vh",
-  overflow: "auto",
+  height: "97vh",
+  overflowY: "scroll",
+
   "@media (max-width: 600px)": {},
 };

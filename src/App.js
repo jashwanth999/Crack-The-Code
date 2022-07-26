@@ -14,7 +14,7 @@ function App() {
       </div>
       <br />
       <Divider />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

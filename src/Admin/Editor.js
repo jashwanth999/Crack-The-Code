@@ -97,7 +97,7 @@ function TextEditor() {
       alert(error.message);
     }
   };
-  console.log(convertToRaw(editorState.getCurrentContent()).blocks);
+  //console.log(convertToRaw(editorState.getCurrentContent()).blocks);
 
   return (
     <div style={{ display: "flex", flex: 1, flexDirection: "row" }}>

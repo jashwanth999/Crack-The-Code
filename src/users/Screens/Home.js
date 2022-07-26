@@ -76,7 +76,7 @@ const rootDiv = {
 const leftDiv = {
   display: "flex",
   flex: 0.25,
-  backgroundColor: "#F8F9F9",
+  backgroundColor: "#212F3C",
   height: "90vh",
   flexDirection: "column",
   textAlign: "left",

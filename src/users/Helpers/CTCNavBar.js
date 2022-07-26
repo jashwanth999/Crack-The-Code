@@ -20,7 +20,7 @@ export default function CTCNavBar() {
     <StyleRoot>
       <AppBar
         style={{
-          backgroundColor: "white",
+          backgroundColor: "#212F3C",
           textAlign: "center",
 
           zIndex: 1,

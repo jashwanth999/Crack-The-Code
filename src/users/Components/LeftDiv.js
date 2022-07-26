@@ -17,7 +17,7 @@ export default function LeftDiv(props) {
             <ListItemText
               style={{
                 color:
-                  props.text === val.replace(/-/g, " ") ? "#596ABC" : "#566573",
+                  props.text === val.replace(/-/g, " ") ? "#596ABC" : "white",
               }}
             >
               <Typography style={{ fontWeight: "bold", fontSize: 15 }}>
