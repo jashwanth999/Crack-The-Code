@@ -35,7 +35,7 @@ export default function CTCNavBar() {
             aria-label="open drawer"
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <MenuIcon style={{ color: "black" }} />
+            <MenuIcon style={{ color: "white" }} />
           </IconButton>
           <div style={titleDiv}>
             <img
